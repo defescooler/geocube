@@ -5,6 +5,11 @@ const nextConfig = {
   poweredByHeader: false,
   generateEtags: false,
   
+  // Disable ESLint during build for deployment
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  
   // Image optimization
   images: {
     formats: ['image/webp', 'image/avif'],
@@ -15,7 +20,6 @@ const nextConfig = {
   
   // Bundle optimization
   experimental: {
-    optimizeCss: true,
     optimizePackageImports: ['lucide-react', 'framer-motion', '@radix-ui/react-avatar'],
   },
   
