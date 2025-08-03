@@ -167,7 +167,7 @@ function VectorizedDatasetCard({ className }: { className?: string }) {
                       </span>
                     </td>
                     <td className="px-4 py-3">
-                      <span className="text-sm font-medium text-blue-400">
+                      <span className="text-sm font-medium text-emerald-400">
                         {row.mineralClass}
                       </span>
                     </td>
@@ -223,42 +223,41 @@ export default function FeaturesSectionDemo() {
     },
     // Row 3
     {
-      title: "Track issues effectively",
+      title: "AI-Powered Geological Intelligence at Scale",
       description:
-        "Track and manage your project issues with ease using our intuitive interface.",
+        "Machine learning algorithms trained on 70+ years of Soviet-era geological surveys automatically classify mineral signatures, predict exploration targets, and rank blocks by commercial viability — turning decades of field experience into algorithmic precision.",
       skeleton: <SkeletonOne />,
       className: "col-span-1 lg:col-span-3 border-b lg:border-r dark:border-neutral-800",
     },
     {
-      title: "New Section 2",
+      title: "Mapping & Block Ranking Engine",
       description:
-        "Description for the new section 2",
-      skeleton: <div className="h-full w-full bg-neutral-100 dark:bg-neutral-800 rounded-lg flex items-center justify-center">
-        <p className="text-neutral-500 dark:text-neutral-400">New Card 2</p>
-      </div>,
+        "Divides land into blocks for resource potential scoring. Applies a custom block-ranking algorithm based on vectors, AI, and economic factors. Supports strategic land selection and claim decisions.",
+      skeleton: <SkeletonLightningFast />,
       className: "col-span-1 lg:col-span-3 border-b lg:border-none dark:border-neutral-800",
     },
   ];
   return (
-    <div className="relative z-20 py-10 lg:py-40 max-w-7xl mx-auto">
+    <div id="features" className="relative z-20 py-10 lg:py-40 max-w-7xl mx-auto">
       <div className="px-8">
         <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
-          Packed with thousands of features
+            Every Layer Tells a Story
         </h4>
 
         <p className="text-sm lg:text-base  max-w-2xl  my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
-          From Image generation to video generation, Everything AI has APIs for
-          literally everything. It can even create this website copy for you.
+        GeoCube transforms fragmented geological inputs into a unified, high-precision system — combining legacy data, satellite analytics, 
+        and AI-driven modeling. Each feature is engineered to reduce risk, compress timelines, and uncover what others overlook.
+
         </p>
       </div>
 
-      <div className="relative ">
-        <div className="grid grid-cols-1 lg:grid-cols-6 mt-12 xl:border rounded-md dark:border-neutral-800">
+      <div className="relative">
+        <div className="grid grid-cols-1 lg:grid-cols-6 mt-12 border border-neutral-200/50 dark:border-neutral-800/50 rounded-xl overflow-hidden bg-white/30 dark:bg-neutral-900/30 backdrop-blur-sm">
           {features.map((feature) => (
             <FeatureCard key={feature.title} className={feature.className}>
               <FeatureTitle>{feature.title}</FeatureTitle>
               <FeatureDescription>{feature.description}</FeatureDescription>
-              <div className=" h-full w-full">{feature.skeleton}</div>
+              <div className="h-64 md:h-80 lg:h-96 w-full">{feature.skeleton}</div>
             </FeatureCard>
           ))}
         </div>
@@ -275,7 +274,7 @@ const FeatureCard = ({
   className?: string;
 }) => {
   return (
-    <div className={cn(`p-4 sm:p-8 relative overflow-hidden`, className)}>
+    <div className={cn(`p-4 sm:p-8 relative overflow-hidden min-h-96 bg-transparent`, className)}>
       {children}
     </div>
   );
@@ -283,7 +282,7 @@ const FeatureCard = ({
 
 const FeatureTitle = ({ children }: { children?: React.ReactNode }) => {
   return (
-    <p className=" max-w-5xl mx-auto text-left tracking-tight text-black dark:text-white text-xl md:text-2xl md:leading-snug">
+    <p className="w-full text-left tracking-tight text-black dark:text-white text-lg sm:text-xl lg:text-2xl xl:text-3xl leading-tight mb-4 font-medium">
       {children}
     </p>
   );
@@ -293,9 +292,9 @@ const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
   return (
     <p
       className={cn(
-        "text-sm md:text-base  max-w-4xl text-left mx-auto",
-        "text-neutral-500 text-center font-normal dark:text-neutral-300",
-        "text-left max-w-sm mx-0 md:text-sm my-2"
+        "w-full text-left text-sm sm:text-base lg:text-lg leading-relaxed",
+        "text-neutral-600 dark:text-neutral-300 font-normal mb-6",
+        "text-outline"
       )}
     >
       {children}
@@ -347,33 +346,66 @@ export const SkeletonOne = () => {
       },
       { duration: 0.8 },
     ],
+    [
+      ".circle-6",
+      {
+        scale,
+        transform,
+      },
+      { duration: 0.8 },
+    ],
+    [
+      ".circle-7",
+      {
+        scale,
+        transform,
+      },
+      { duration: 0.8 },
+    ],
+    [
+      ".circle-8",
+      {
+        scale,
+        transform,
+      },
+      { duration: 0.8 },
+    ],
   ];
 
   useEffect(() => {
+    // @ts-ignore - Known framer-motion type issue
     animate(sequence, {
-      // @ts-ignore
       repeat: Infinity,
       repeatDelay: 1,
     });
-  }, []);
+  }, [sequence]);
 
   return (
     <div className="p-8 overflow-hidden h-full relative flex items-center justify-center">
-      <div className="flex flex-row shrink-0 justify-center items-center gap-2">
-        <Container className="h-8 w-8 circle-1">
-          <ClaudeLogo className="h-4 w-4 " />
+      <div className="flex flex-row shrink-0 justify-center items-center gap-3">
+        <Container className="h-16 w-16 circle-1">
+          <OpenAILogo className="h-10 w-10 dark:text-white" />
         </Container>
-        <Container className="h-12 w-12 circle-2">
-          <GoCopilot className="h-6 w-6 dark:text-white" />
+        <Container className="h-20 w-20 circle-2">
+          <AWSLogo className="h-12 w-12 dark:text-white" />
         </Container>
-        <Container className="circle-3">
-          <OpenAILogo className="h-8 w-8 dark:text-white" />
+        <Container className="h-24 w-24 circle-3">
+          <ArcGISLogo className="h-14 w-14 dark:text-white" />
         </Container>
-        <Container className="h-12 w-12 circle-4">
-          <MetaIconOutline className="h-6 w-6 " />
+        <Container className="h-20 w-20 circle-4">
+          <TensorFlowLogo className="h-12 w-12" />
         </Container>
-        <Container className="h-8 w-8 circle-5">
-          <GeminiLogo className="h-4 w-4 " />
+        <Container className="h-16 w-16 circle-5">
+          <DockerLogo className="h-10 w-10" />
+        </Container>
+        <Container className="h-20 w-20 circle-6">
+          <PythonLogo className="h-12 w-12" />
+        </Container>
+        <Container className="h-16 w-16 circle-7">
+          <ReactLogo className="h-10 w-10" />
+        </Container>
+        <Container className="h-20 w-20 circle-8">
+          <PostgreSQLLogo className="h-12 w-12" />
         </Container>
       </div>
 
@@ -428,8 +460,10 @@ const Container = ({
   return (
     <div
       className={cn(
-        `h-16 w-16 rounded-full flex items-center justify-center bg-[rgba(248,248,248,0.01)]
-    shadow-[0px_0px_8px_0px_rgba(248,248,248,0.25)_inset,0px_32px_24px_-16px_rgba(0,0,0,0.40)]
+        `rounded-full flex items-center justify-center bg-white/10 dark:bg-black/20
+    shadow-[0px_0px_12px_0px_rgba(255,255,255,0.15)_inset,0px_8px_16px_-8px_rgba(0,0,0,0.30)]
+    dark:shadow-[0px_0px_12px_0px_rgba(255,255,255,0.05)_inset,0px_8px_16px_-8px_rgba(0,0,0,0.60)]
+    border border-white/20 dark:border-white/10 backdrop-blur-sm
     `,
         className
       )}
@@ -439,24 +473,15 @@ const Container = ({
   );
 };
 
-export const ClaudeLogo = ({ className }: { className?: string }) => {
+export const AWSLogo = ({ className }: { className?: string }) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      shapeRendering="geometricPrecision"
-      textRendering="geometricPrecision"
-      imageRendering="optimizeQuality"
-      fillRule="evenodd"
-      clipRule="evenodd"
-      viewBox="0 0 512 512"
+      viewBox="0 0 24 24"
       className={className}
+      fill="currentColor"
     >
-      <rect fill="#CC9B7A" width="512" height="512" rx="104.187" ry="105.042" />
-      <path
-        fill="#1F1F1E"
-        fillRule="nonzero"
-        d="M318.663 149.787h-43.368l78.952 212.423 43.368.004-78.952-212.427zm-125.326 0l-78.952 212.427h44.255l15.932-44.608 82.846-.004 16.107 44.612h44.255l-79.126-212.427h-45.317zm-4.251 128.341l26.91-74.701 27.083 74.701h-53.993z"
-      />
+      <path d="M6.54 14.72c-1.07 0-1.93-.87-1.93-1.94s.86-1.94 1.93-1.94 1.93.87 1.93 1.94-.86 1.94-1.93 1.94zm0-3.32c-.76 0-1.37.62-1.37 1.38s.61 1.38 1.37 1.38 1.37-.62 1.37-1.38-.61-1.38-1.37-1.38zm4.42 3.32c-1.07 0-1.93-.87-1.93-1.94s.86-1.94 1.93-1.94 1.93.87 1.93 1.94-.86 1.94-1.93 1.94zm0-3.32c-.76 0-1.37.62-1.37 1.38s.61 1.38 1.37 1.38 1.37-.62 1.37-1.38-.61-1.38-1.37-1.38zm4.42 3.32c-1.07 0-1.93-.87-1.93-1.94s.86-1.94 1.93-1.94 1.93.87 1.93 1.94-.86 1.94-1.93 1.94zm0-3.32c-.76 0-1.37.62-1.37 1.38s.61 1.38 1.37 1.38 1.37-.62 1.37-1.38-.61-1.38-1.37-1.38zM3.17 18.05c2.8 2.07 6.68 3.17 10.08 3.17 4.77 0 9.07-1.76 12.33-4.68.32-.29.03-.69-.36-.46-4.04 2.35-9.03 3.77-14.18 3.77-3.47 0-7.27-.72-10.77-2.21-.43-.18-.89.28-.5.63l.4.78z"/>
+      <path d="M22.32 16.75c-.36-.46-2.39-.22-3.3-.11-.28.03-.32-.21-.07-.39 1.61-1.13 4.26-.81 4.57-.43.31.39-.08 3.06-1.61 4.34-.23.19-.45.09-.35-.16.34-.85 1.12-2.78.76-3.25z"/>
     </svg>
   );
 };
@@ -508,55 +533,74 @@ export const GeminiLogo = ({ className }: { className?: string }) => {
   );
 };
 
-export const MetaIconOutline = ({ className }: { className?: string }) => {
+export const ArcGISLogo = ({ className }: { className?: string }) => {
   return (
     <svg
-      id="Layer_1"
-      data-name="Layer 1"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 287.56 191"
+      viewBox="0 0 24 24"
       className={className}
+      fill="currentColor"
     >
-      <defs>
-        <linearGradient
-          id="linear-gradient"
-          x1="62.34"
-          y1="101.45"
-          x2="260.34"
-          y2="91.45"
-          gradientTransform="matrix(1, 0, 0, -1, 0, 192)"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop offset="0" stopColor="#0064e1" />
-          <stop offset="0.4" stopColor="#0064e1" />
-          <stop offset="0.83" stopColor="#0073ee" />
-          <stop offset="1" stopColor="#0082fb" />
-        </linearGradient>
-        <linearGradient
-          id="linear-gradient-2"
-          x1="41.42"
-          y1="53"
-          x2="41.42"
-          y2="126"
-          gradientTransform="matrix(1, 0, 0, -1, 0, 192)"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop offset="0" stopColor="#0082fb" />
-          <stop offset="1" stopColor="#0064e0" />
-        </linearGradient>
-      </defs>
-      <path
-        fill="#0081fb"
-        d="M31.06,126c0,11,2.41,19.41,5.56,24.51A19,19,0,0,0,53.19,160c8.1,0,15.51-2,29.79-21.76,11.44-15.83,24.92-38,34-52l15.36-23.6c10.67-16.39,23-34.61,37.18-47C181.07,5.6,193.54,0,206.09,0c21.07,0,41.14,12.21,56.5,35.11,16.81,25.08,25,56.67,25,89.27,0,19.38-3.82,33.62-10.32,44.87C271,180.13,258.72,191,238.13,191V160c17.63,0,22-16.2,22-34.74,0-26.42-6.16-55.74-19.73-76.69-9.63-14.86-22.11-23.94-35.84-23.94-14.85,0-26.8,11.2-40.23,31.17-7.14,10.61-14.47,23.54-22.7,38.13l-9.06,16c-18.2,32.27-22.81,39.62-31.91,51.75C84.74,183,71.12,191,53.19,191c-21.27,0-34.72-9.21-43-23.09C3.34,156.6,0,141.76,0,124.85Z"
-      />
-      <path
-        fill="url(#linear-gradient)"
-        d="M24.49,37.3C38.73,15.35,59.28,0,82.85,0c13.65,0,27.22,4,41.39,15.61,15.5,12.65,32,33.48,52.63,67.81l7.39,12.32c17.84,29.72,28,45,33.93,52.22,7.64,9.26,13,12,19.94,12,17.63,0,22-16.2,22-34.74l27.4-.86c0,19.38-3.82,33.62-10.32,44.87C271,180.13,258.72,191,238.13,191c-12.8,0-24.14-2.78-36.68-14.61-9.64-9.08-20.91-25.21-29.58-39.71L146.08,93.6c-12.94-21.62-24.81-37.74-31.68-45C107,40.71,97.51,31.23,82.35,31.23c-12.27,0-22.69,8.61-31.41,21.78Z"
-      />
-      <path
-        fill="url(#linear-gradient-2)"
-        d="M82.35,31.23c-12.27,0-22.69,8.61-31.41,21.78C38.61,71.62,31.06,99.34,31.06,126c0,11,2.41,19.41,5.56,24.51L10.14,167.91C3.34,156.6,0,141.76,0,124.85,0,94.1,8.44,62.05,24.49,37.3,38.73,15.35,59.28,0,82.85,0Z"
-      />
+      <path d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zm0 20c-4.962 0-9-4.037-9-9 0-4.962 4.038-9 9-9s9 4.038 9 9c0 4.963-4.037 9-9 9zm-1-16v2h2V5h-2zm0 4v8h2V9h-2z"/>
+    </svg>
+  );
+};
+
+export const TensorFlowLogo = ({ className }: { className?: string }) => {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="currentColor"
+    >
+      <path d="M1.292 5.856L11.54 0v24l-4.095-2.378V7.603l-6.153 3.564v-5.31zm21.416 5.311l-10.248 5.931V24l4.095-2.378V9.603l6.153-3.564v5.128z"/>
+    </svg>
+  );
+};
+
+export const DockerLogo = ({ className }: { className?: string }) => {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="currentColor"
+    >
+      <path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.186m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186H5.136a.186.186 0 00-.186.186v1.887a.186.186 0 00.186.185M2.118 8.365h2.119a.186.186 0 00.185-.185V6.29a.185.185 0 00-.185-.185H2.118a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.185V6.29a.185.185 0 00-.185-.185H-.001a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186"/>
+    </svg>
+  );
+};
+
+export const PythonLogo = ({ className }: { className?: string }) => {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="currentColor"
+    >
+      <path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/>
+    </svg>
+  );
+};
+
+export const ReactLogo = ({ className }: { className?: string }) => {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="currentColor"
+    >
+      <path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.36-.034-.47 0-.92.014-1.36.034.44-.572.895-1.096 1.36-1.564zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.866.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.36.034.47 0 .92-.014 1.36-.034-.44.572-.895 1.095-1.36 1.56-.465-.467-.92-.990-1.36-1.56z"/>
+    </svg>
+  );
+};
+
+export const PostgreSQLLogo = ({ className }: { className?: string }) => {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="currentColor"
+    >
+      <path d="M23.111 5.866c-.72-.662-1.907-.662-3.091-.078-.725.357-1.49.904-2.187 1.567-.697.662-1.318 1.412-1.793 2.24-.442.772-.749 1.618-.796 2.495-.047.877.135 1.795.654 2.598.519.803 1.374 1.491 2.375 1.888.725.286 1.508.357 2.267.252.759-.105 1.493-.395 2.093-.843.6-.448 1.065-1.055 1.287-1.738.221-.683.199-1.444-.126-2.132-.324-.688-.907-1.305-1.683-1.673-.776-.368-1.745-.487-2.674-.253.93-.28 1.897-.373 2.825-.155.927.218 1.815.738 2.478 1.463.663.725 1.099 1.656 1.204 2.616.105.96-.085 1.949-.547 2.794-.462.845-1.195 1.546-2.091 1.922-.896.375-1.954.426-2.946.069-.992-.357-1.918-1.1-2.607-2.011-.689-.911-1.141-2.069-1.232-3.245-.091-1.176.134-2.371.627-3.463.494-1.092 1.247-2.083 2.17-2.894.923-.811 2.016-1.443 3.135-1.808 1.119-.365 2.264-.463 3.384-.215 1.12.248 2.215.806 3.11 1.592.895.787 1.59 1.804 1.96 2.904.37 1.1.414 2.283.018 3.399-.396 1.116-1.288 2.164-2.489 2.909-1.201.745-2.712 1.186-4.212 1.179-1.5-.007-2.99-.464-4.246-1.241-1.256-.777-2.28-1.874-2.914-3.108-.635-1.234-.881-2.607-.632-3.958.249-1.351.895-2.68 1.873-3.77.978-1.09 2.289-1.941 3.692-2.367 1.403-.426 2.898-.427 4.301.001 1.403.428 2.706 1.281 3.683 2.373.977 1.092 1.627 2.421 1.88 3.773.253 1.352.009 2.726-.634 3.962-.643 1.236-1.666 2.334-2.921 3.112-1.255.778-2.743 1.236-4.241 1.243-1.498.007-3.007-.433-4.207-1.177-1.2-.744-2.092-1.79-2.489-2.905-.397-1.115-.354-2.296.015-3.395.369-1.099 1.063-2.115 1.957-2.901.894-.786 1.988-1.343 3.107-1.591 1.119-.248 2.263-.15 3.381.214 1.118.364 2.211.996 3.133 1.806.922.81 1.674 1.8 2.168 2.891.494 1.091.718 2.285.628 3.46-.09 1.175-.542 2.332-1.23 3.242-.688.91-1.613 1.652-2.604 2.009-.991.357-2.048.306-2.943-.069-.895-.375-1.627-1.075-2.089-1.919-.462-.844-.653-1.832-.548-2.791.105-.959.54-1.889 1.202-2.614.662-.725 1.549-1.244 2.476-1.462.927-.218 1.893-.125 2.823.155-.928-.234-1.897-.115-2.672.253-.775.368-1.358.985-1.682 1.673-.324.688-.346 1.449-.125 2.132.221.683.686 1.29 1.286 1.738.6.448 1.333.738 2.092.843.759.105 1.541.034 2.266-.252 1-.397 1.855-1.085 2.374-1.888.519-.803.701-1.721.654-2.598-.047-.877-.354-1.723-.796-2.495-.442-.772-1.063-1.522-1.76-2.184-.697-.663-1.462-1.21-2.187-1.567-1.184-.584-2.371-.584-3.091.078z"/>
     </svg>
   );
 };
@@ -1142,6 +1186,247 @@ export const SkeletonFive = () => {
       </div>
 
 
+    </div>
+  );
+};
+
+export const SkeletonSix = () => {
+  const [activeLayer, setActiveLayer] = React.useState("geological");
+  const [selectedBlock, setSelectedBlock] = React.useState("KZ-1047");
+  
+  const metrics = [
+    { label: "Рудопроявления", value: "20 175", color: "from-yellow-400 to-orange-500", icon: "⛏️" },
+    { label: "Обработано отчетов", value: "1 330", color: "from-green-400 to-emerald-500", icon: "📊" },
+    { label: "Покрытие отчетов ГДП200", value: "70", color: "from-blue-400 to-cyan-500", icon: "📋" }
+  ];
+
+  const layers = [
+    { id: "geological", name: "Geological", active: true },
+    { id: "magnetic", name: "Magnetic", active: false },
+    { id: "thermal", name: "Thermal", active: true },
+    { id: "structural", name: "Structural", active: false }
+  ];
+
+  return (
+    <div className="relative h-full w-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-lg overflow-hidden min-h-64">
+      {/* Map Background with Grid */}
+      <div className="absolute inset-0 opacity-40">
+        <div className="relative w-full h-full bg-gradient-to-br from-neutral-800 via-neutral-700 to-neutral-900">
+          {/* Grid overlay */}
+          <div className="absolute inset-0 opacity-30"
+               style={{
+                 backgroundImage: `
+                   linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                   linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+                 `,
+                 backgroundSize: '40px 40px'
+               }} />
+          
+          {/* Geological blocks simulation */}
+          <motion.div 
+            className="absolute top-1/4 left-1/3 w-20 h-16 bg-green-500/60 rounded-sm"
+            animate={{ opacity: [0.4, 0.7, 0.4] }}
+            transition={{ duration: 3, repeat: Infinity }}
+          />
+          <motion.div 
+            className="absolute top-1/2 right-1/4 w-16 h-12 bg-red-500/60 rounded-sm"
+            animate={{ opacity: [0.6, 0.4, 0.6] }}
+            transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
+          />
+          <motion.div 
+            className="absolute bottom-1/3 left-1/4 w-24 h-20 bg-yellow-500/60 rounded-sm"
+            animate={{ opacity: [0.3, 0.6, 0.3] }}
+            transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+          />
+        </div>
+      </div>
+
+      {/* Top Metrics Dashboard */}
+      <div className="absolute top-4 right-4 space-y-2">
+        {metrics.map((metric, index) => (
+          <motion.div
+            key={metric.label}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: index * 0.2 }}
+            className="bg-black/70 backdrop-blur-sm rounded-lg p-3 min-w-48"
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-xs text-neutral-400 mb-1">{metric.label}</div>
+                <div className={`text-2xl font-bold bg-gradient-to-r ${metric.color} bg-clip-text text-transparent`}>
+                  {metric.value}
+                </div>
+              </div>
+              <div className="text-2xl opacity-60">{metric.icon}</div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Layer Controls */}
+      <div className="absolute top-4 left-4 bg-black/70 backdrop-blur-sm rounded-lg p-4">
+        <div className="text-sm text-white mb-3 font-medium">Active Layers</div>
+        <div className="space-y-2">
+          {layers.map((layer) => (
+            <motion.div
+              key={layer.id}
+              className="flex items-center space-x-2 cursor-pointer"
+              whileHover={{ scale: 1.02 }}
+              onClick={() => setActiveLayer(layer.id)}
+            >
+              <motion.div
+                className={`w-3 h-3 rounded border-2 ${
+                  layer.active 
+                    ? "bg-cyan-400 border-cyan-400" 
+                    : "border-neutral-500"
+                }`}
+                animate={layer.active ? { boxShadow: "0 0 8px rgba(34, 211, 238, 0.6)" } : {}}
+              />
+              <span className="text-xs text-neutral-300">{layer.name}</span>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Bottom Analysis Panel */}
+      <div className="absolute bottom-4 left-4 right-4 bg-black/80 backdrop-blur-sm rounded-lg p-4">
+        <div className="grid grid-cols-3 gap-4">
+          {/* Mini Chart */}
+          <div className="col-span-1">
+            <div className="text-xs text-neutral-400 mb-2">Mineral Distribution</div>
+            <div className="flex items-end space-x-1 h-16">
+              {[65, 85, 45, 75, 55, 90, 70].map((height, i) => (
+                <motion.div
+                  key={i}
+                  className="bg-gradient-to-t from-cyan-500 to-blue-400 w-2 rounded-t"
+                  style={{ height: `${height}%` }}
+                  animate={{ height: [`${height * 0.3}%`, `${height}%`] }}
+                  transition={{ delay: i * 0.1, duration: 1.5 }}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Block Details */}
+          <div className="col-span-1">
+            <div className="text-xs text-neutral-400 mb-2">Selected Block: {selectedBlock}</div>
+            <div className="space-y-1">
+              <div className="flex justify-between text-xs">
+                <span className="text-neutral-300">Depth:</span>
+                <span className="text-cyan-400">200-450m</span>
+              </div>
+              <div className="flex justify-between text-xs">
+                <span className="text-neutral-300">Confidence:</span>
+                <span className="text-green-400">90%</span>
+              </div>
+              <div className="flex justify-between text-xs">
+                <span className="text-neutral-300">Minerals:</span>
+                <span className="text-yellow-400">Cu + Au</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="col-span-1 flex flex-col space-y-2">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-xs px-3 py-2 rounded font-medium"
+            >
+              Generate Report
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs px-3 py-2 rounded font-medium"
+            >
+              3D Visualization
+            </motion.button>
+          </div>
+        </div>
+      </div>
+
+      {/* Scanning Animation Overlay */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        animate={{ 
+          background: [
+            "linear-gradient(90deg, transparent 0%, rgba(6, 182, 212, 0.1) 50%, transparent 100%)",
+            "linear-gradient(90deg, transparent 100%, rgba(6, 182, 212, 0.1) 150%, transparent 200%)"
+          ]
+        }}
+        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+      />
+
+      {/* Crosshair cursor simulation */}
+      <motion.div
+        className="absolute w-4 h-4 border border-cyan-400/60 pointer-events-none"
+        animate={{
+          top: ["25%", "75%", "40%", "60%"],
+          left: ["30%", "70%", "50%", "35%"]
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <div className="absolute inset-0 border-l border-t border-cyan-400/60" />
+        <div className="absolute inset-0 border-r border-b border-cyan-400/60" />
+      </motion.div>
+    </div>
+  );
+};
+
+export const SkeletonLightningFast = () => {
+  return (
+    <div className="relative h-full w-full bg-white dark:bg-neutral-900 rounded-lg overflow-hidden min-h-64 border border-neutral-200 dark:border-neutral-800">
+      {/* Chart Area - Full Width */}
+      <div className="relative w-full h-full p-6">
+        {/* Chart Window Controls */}
+        <div className="absolute left-4 top-4 flex gap-1.5 z-10">
+          <span className="block w-3 h-3 rounded-full bg-red-500/60"></span>
+          <span className="block w-3 h-3 rounded-full bg-yellow-500/60"></span>
+          <span className="block w-3 h-3 rounded-full bg-green-500/60"></span>
+        </div>
+
+        {/* Chart Content - YC Style */}
+        <div className="mt-12 h-full flex items-end">
+          <svg className="w-full h-3/4" viewBox="0 0 366 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* Clean YC-style path with strong upward trend */}
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M0 180V160L8 155L16 150L24 140L32 135L40 125L48 120L56 115L64 105L72 100L80 95L88 85L96 80L104 75L112 65L120 60L128 55L136 45L144 40L152 35L160 30L168 25L176 20L184 15L192 12L200 10L208 8L216 6L224 5L232 4L240 3L248 2.5L256 2L264 1.5L272 1L280 0.8L288 0.6L296 0.4L304 0.3L312 0.2L320 0.15L328 0.1L336 0.08L344 0.06L352 0.04L360 0.02L366 0V180H0Z"
+              fill="url(#yc_gradient)"
+            />
+            <path
+              d="M0 160L8 155L16 150L24 140L32 135L40 125L48 120L56 115L64 105L72 100L80 95L88 85L96 80L104 75L112 65L120 60L128 55L136 45L144 40L152 35L160 30L168 25L176 20L184 15L192 12L200 10L208 8L216 6L224 5L232 4L240 3L248 2.5L256 2L264 1.5L272 1L280 0.8L288 0.6L296 0.4L304 0.3L312 0.2L320 0.15L328 0.1L336 0.08L344 0.06L352 0.04L360 0.02L366 0"
+              stroke="#ff6600"
+              strokeWidth="3"
+              fill="none"
+            />
+            <defs>
+              <linearGradient id="yc_gradient" x1="0" y1="0" x2="0" y2="180" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#ff6600" stopOpacity="0.2" />
+                <stop offset="1" stopColor="#ff6600" stopOpacity="0.02" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        {/* Metrics overlay - YC style */}
+        <div className="absolute bottom-6 left-6 text-left">
+          <div className="text-3xl font-bold text-neutral-900 dark:text-white">↗ 847%</div>
+          <div className="text-sm text-neutral-600 dark:text-neutral-400">Block ranking accuracy</div>
+        </div>
+
+        {/* Simple grid background */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+          <div className="h-full w-full" 
+               style={{
+                 backgroundImage: 'linear-gradient(0deg, rgba(0,0,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)',
+                 backgroundSize: '30px 30px'
+               }} />
+        </div>
+      </div>
     </div>
   );
 };

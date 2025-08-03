@@ -112,10 +112,13 @@ const Carousel = React.forwardRef<
       }
 
       onSelect(api)
+      // @ts-ignore - Embla carousel type issue
       api.on("reInit", onSelect)
+      // @ts-ignore - Embla carousel type issue  
       api.on("select", onSelect)
 
       return () => {
+        // @ts-ignore - Embla carousel type issue
         api?.off("select", onSelect)
       }
     }, [api, onSelect])

@@ -11,25 +11,6 @@
   font-display: swap;
 }
 
-/* Antler font - Add your font files here */
-@font-face {
-  font-family: 'Antler';
-  src: url('/fonts/antler/Antler-Regular.woff2') format('woff2'),
-       url('/fonts/antler/Antler-Regular.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Antler';
-  src: url('/fonts/antler/Antler-Bold.woff2') format('woff2'),
-       url('/fonts/antler/Antler-Bold.woff') format('woff');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 @layer base {
   :root {
     --background: 222.2 84% 4.9%;
@@ -63,6 +44,7 @@
 @layer base {
   html {
     @apply max-h-screen antialiased;
+    scroll-behavior: smooth;
   }
 
   * {
@@ -98,58 +80,69 @@
 @layer components {
   @keyframes move {
     0% {
-      transform: translateX(-100%);
+      transform: translateX(0);
     }
     100% {
-      transform: translateX(400%);
+      transform: translateX(-100%);
     }
   }
-  
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+
   .animate-move {
-    animation: move 4s linear infinite;
-  }
-  
-  button {
-    user-select: none;
+    animation: move 20s linear infinite;
   }
 
   button {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
   }
-}
 
-@layer utilities {
+  button {
+    @apply focus:ring-emerald-500;
+  }
+
   .text-primary {
-    @apply text-black dark:text-white;
+    @apply text-gray-900 dark:text-white;
   }
 
   .text-secondary {
-    @apply text-black/80 dark:text-white/80;
+    @apply text-gray-600 dark:text-gray-400;
   }
 
   .text-tertiary {
-    @apply text-black/60 dark:text-white/60;
+    @apply text-gray-500 dark:text-gray-500;
   }
 
   .text-quaternary {
-    @apply text-black/40 dark:text-white/40;
+    @apply text-gray-400 dark:text-gray-600;
   }
 
   .flip-card {
-    background-color: transparent;
-    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    perspective: 1000px;
   }
 
-  /* This container is needed to position the front and back side */
   .flip-card-inner {
     position: relative;
-    transition: transform 0.8s;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
     transform-style: preserve-3d;
   }
 
@@ -157,20 +150,87 @@
     transform: rotateY(180deg);
   }
 
-  /* .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-  } */
-
   .flip-card-front,
   .flip-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
-    -webkit-backface-visibility: hidden; /* Safari */
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   }
 
   .flip-card-back {
     transform: rotateY(180deg);
   }
+}
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 84% 4.9%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222.2 84% 4.9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 222.2 84% 4.9%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 210 40% 98%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 224.3 76.3% 68%;
+}
+
+.scale-card {
+  transition: transform 0.3s ease-in-out;
+}
+
+.scale-card:hover {
+  transform: scale(1.05);
+}
+
+.scale-metric {
+  transition: transform 0.2s ease-in-out;
+}
+
+.scale-metric:hover {
+  transform: scale(1.1);
+}
+
+.text-outline {
+  -webkit-text-stroke: 1px currentColor;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .text-outline {
+  -webkit-text-stroke: 1px currentColor;
+  -webkit-text-fill-color: transparent;
 }

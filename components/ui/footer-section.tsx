@@ -45,12 +45,12 @@ const footerLinks: FooterSection[] = [
 		],
 	},
 	{
-		label: 'Connect',
+		label: 'Contact',
 		links: [
-			{ title: 'Email', href: 'mailto:hello@terra.is', icon: MailIcon },
+			{ title: 'Email', href: 'mailto:info@geocube.kz', icon: MailIcon },
+			{ title: 'Phone', href: 'tel:+77273851005' },
 			{ title: 'LinkedIn', href: '#', icon: LinkedinIcon },
 			{ title: 'Twitter', href: '#', icon: TwitterIcon },
-			{ title: 'YouTube', href: '#', icon: YoutubeIcon },
 		],
 	},
 ];
@@ -61,24 +61,28 @@ export function Footer() {
 			<div className="bg-foreground/20 absolute top-0 right-1/2 left-1/2 h-px w-1/3 -translate-x-1/2 -translate-y-1/2 rounded-full blur" />
 
 			<div className="grid w-full gap-8 xl:grid-cols-3 xl:gap-8">
-				<AnimatedContainer className="space-y-4">
+				<AnimatedContainer className="space-y-2">
 					<div className="flex items-center gap-3">
 						<Image 
 							src="/logos/geocube_white.svg" 
 							alt="GeoCube" 
-							width={32} 
-							height={32} 
-							className="h-8 w-8"
+							width={128} 
+							height={128} 
+							className="h-32 w-32"
 						/>
-						<div>
-							<h3 className="text-xl font-bold text-white">GeoCube</h3>
-							<p className="text-muted-foreground text-xs">by Terra Exploration</p>
-						</div>
 					</div>
 					<p className="text-muted-foreground text-sm max-w-sm">
 						Precision mineral intelligence at enterprise scale. Transforming geological exploration through AI-powered data fusion.
 					</p>
-					<p className="text-muted-foreground mt-8 text-sm md:mt-4">
+					<div className="space-y-1">
+						<p className="text-muted-foreground text-sm">
+							050010, Republic of Kazakhstan, Almaty, Kok-Tobe microdistrict, Rose Baglanova Street, 83.
+						</p>
+						<p className="text-muted-foreground text-sm">
+							Phone: +7 (727) 385-10-05
+						</p>
+					</div>
+					<p className="text-muted-foreground mt-4 text-sm">
 						© {new Date().getFullYear()} Terra Exploration. All rights reserved.
 					</p>
 				</AnimatedContainer>

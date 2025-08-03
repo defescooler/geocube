@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export default function CTASection() {
   return (
-    <section className="py-24 bg-gradient-to-br from-slate-900 via-blue-950/50 to-slate-950 relative overflow-hidden">
+    <section id="contact" className="py-24 bg-gradient-to-br from-slate-900 via-blue-950/50 to-slate-950 relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)]" />
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />

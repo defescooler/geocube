@@ -3,12 +3,13 @@ import './globals.css';
 import Providers from './providers';
 import { cn } from '@/lib/utils';
 import AnimateEnter from '@/ui/AnimateEnter';
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://geocube.terra.is'),
   authors: [{ name: 'Terra Exploration', url: 'https://terra.is' }],
   category: 'technology',
   creator: 'Terra Exploration',
@@ -62,10 +63,6 @@ export const metadata: Metadata = {
     },
     index: true,
   },
-  themeColor: [
-    { color: '#0f172a', media: '(prefers-color-scheme: light)' },
-    { color: '#0f172a', media: '(prefers-color-scheme: dark)' },
-  ],
   title: {
     default: 'GeoCube - Precision Mineral Intelligence',
     template: '%s | GeoCube',
@@ -75,6 +72,13 @@ export const metadata: Metadata = {
     site: '@terraexploration',
     title: 'GeoCube - AI-Powered Mineral Intelligence',
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { color: '#0f172a', media: '(prefers-color-scheme: light)' },
+    { color: '#0f172a', media: '(prefers-color-scheme: dark)' },
+  ],
 };
 
 export default function RootLayout({
@@ -88,7 +92,6 @@ export default function RootLayout({
         className={cn(
           `${inter.className}`,
           'h-full min-h-screen relative w-full',
-          'bg-slate-950 text-slate-100',
           'motion-reduce:transform-none motion-reduce:transition-none'
         )}
       >

@@ -13,7 +13,7 @@ export default function AnimateEnter({
         animate={{ opacity: 1, y: 0 }}
         className="w-full"
         exit={{ opacity: 0, y: 20 }}
-        initial={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: 'easeInOut' }}
       >
         {children}
