@@ -1,7 +1,7 @@
-import Footer from '../ui/Footer';
+import { Footer } from '@/components/ui/footer-section';
 import './globals.css';
 import Providers from './providers';
-import { cn } from '@/lib/className';
+import { cn } from '@/lib/utils';
 import AnimateEnter from '@/ui/AnimateEnter';
 import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -9,44 +9,48 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  authors: [{ name: 'Cristian Crețu', url: 'https://cretu.dev' }],
-  category: 'design',
-  creator: 'Cristian Crețu',
-  description: 'Design Engineer.',
+  authors: [{ name: 'Terra Exploration', url: 'https://terra.is' }],
+  category: 'technology',
+  creator: 'Terra Exploration',
+  description: 'AI-powered geospatial platform for mineral exploration. Digitizing geology, analyzing satellite data, and accelerating discoveries in Kazakhstan and beyond.',
   icons: {
     apple: '/static/favicons/apple-touch-icon-180x180.png',
     icon: '/static/favicons/favicon-196x196.png',
     shortcut: '/favicon.ico',
   },
   keywords: [
-    'Next.js',
-    'React',
-    'JavaScript',
-    'TypeScript',
-    'TailwindCSS',
-    'Design',
-    'Engineering',
-    'Frontend',
-    'Developer',
+    'GeoCube',
+    'Terra Exploration',
+    'Mineral Exploration',
+    'AI Geospatial',
+    'Satellite Imagery',
+    'Kazakhstan Mining',
+    'Geological Data',
+    'Critical Metals',
+    'Lithium',
+    'Copper',
+    'Machine Learning',
+    'GIS',
+    'Remote Sensing',
   ],
   manifest: '/static/favicons/site.webmanifest',
   openGraph: {
-    description: 'Design Engineer.',
+    description: 'AI-powered geospatial platform revolutionizing mineral exploration with 25+ years of geological expertise.',
     images: [
       {
-        alt: 'Cristian Crețu',
+        alt: 'GeoCube - AI-Powered Mineral Intelligence',
         height: 1080,
-        url: 'https://cretu.dev/static/images/og.png',
+        url: 'https://geocube.terra.is/static/images/og.png',
         width: 1920,
       },
     ],
     locale: 'en-US',
-    siteName: 'Cristian Crețu',
-    title: 'Cristian Crețu',
+    siteName: 'GeoCube by Terra Exploration',
+    title: 'GeoCube - Precision Mineral Intelligence at Enterprise Scale',
     type: 'website',
-    url: 'https://cretu.dev',
+    url: 'https://geocube.terra.is',
   },
-  publisher: 'Cristian Crețu',
+  publisher: 'Terra Exploration',
   robots: {
     follow: true,
     googleBot: {
@@ -59,20 +63,17 @@ export const metadata: Metadata = {
     index: true,
   },
   themeColor: [
-    { color: 'white', media: '(prefers-color-scheme: light)' },
-    { color: '#171717', media: '(prefers-color-scheme: dark)' },
+    { color: '#0f172a', media: '(prefers-color-scheme: light)' },
+    { color: '#0f172a', media: '(prefers-color-scheme: dark)' },
   ],
   title: {
-    default: 'Cristian Crețu',
-    template: '%s | Cristian Crețu',
+    default: 'GeoCube - Precision Mineral Intelligence',
+    template: '%s | GeoCube',
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@cristicrtu',
-    title: 'Cristian Crețu',
-  },
-  verification: {
-    google: 'fK4YqLAHjoaynXLF1e5gaPzDNOircgiYSgAwSXqr61o',
+    site: '@terraexploration',
+    title: 'GeoCube - AI-Powered Mineral Intelligence',
   },
 };
 
@@ -86,13 +87,12 @@ export default function RootLayout({
       <body
         className={cn(
           `${inter.className}`,
-          'h-full, min-h-screen, relative w-full max-w-2xl mx-auto px-4',
-          'my-4 bg-white dark:bg-gray-900 sm:my-24',
+          'h-full min-h-screen relative w-full',
+          'bg-slate-950 text-slate-100',
           'motion-reduce:transform-none motion-reduce:transition-none'
         )}
       >
         <Providers>
-          <nav className='fixed bottom-4 left-2 z-50 sm:left-4 md:left-6'></nav>
           <AnimateEnter>
             <>
               {children}

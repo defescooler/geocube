@@ -1,103 +1,166 @@
-# Ultimate Front-end Template
+# 🚀 GeoCube - Precision Mineral Intelligence at Enterprise Scale
 
-![preview](https://cdn.discordapp.com/attachments/797485737272541250/952208625806495815/image_5.png)
+[![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.3-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
+[![Framer Motion](https://img.shields.io/badge/Framer%20Motion-10.16-ff69b4?style=flat-square&logo=framer)](https://www.framer.com/motion/)
 
-> Most elements are taken from [my website](https://cretu.dev).
+> AI-powered geospatial platform revolutionizing mineral exploration in Kazakhstan and beyond. Built by Terra Exploration with 25+ years of geological expertise.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcristicretu%2Fts-next-tailwind-template)
+## 🎯 Overview
 
-[Use as a CodeSandbox template](https://codesandbox.io/s/ts-next-tailwind-template-vbjvcr)
+GeoCube is a sophisticated web platform showcasing Terra Exploration's cutting-edge AI-powered mineral intelligence system. This website demonstrates our flagship product that digitizes, analyzes, and visualizes geological and satellite data to accelerate mineral exploration.
 
-## Ingredients ✨:
+### 🏆 Key Features
 
-- NextJS 13 🚀
-- TailwindCSS 🦄
-- Typescript 🦺
-- Dark Mode Support 🌓
-- ESLint + Prettier Config 📂
-- Husky 🐶
-- Self-Hosted Inter Font ␊
+- **Scroll-Tied Animations**: Interactive GeoCube assembly animation that responds to scroll
+- **Dark Theme Design**: Sophisticated, data-driven aesthetic with confidence and swagger
+- **Mobile-First Responsive**: Optimized for all devices and screen sizes
+- **Enterprise Grade**: Professional presentation suitable for YC applications and enterprise clients
+- **Performance Optimized**: Built with Next.js 14 for lightning-fast loading
 
-## Getting started
+## 🛠️ Tech Stack
 
-1. With 'use as template' repository
-   ![preview](https://cdn.discordapp.com/attachments/797485737272541250/952208604386189332/Group_11.png)
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Theme**: next-themes for dark/light mode
+- **Package Manager**: pnpm
 
-2. Clone the project
-
-```bash
-# http
-git clone https://github.com/cristicretu/ts-next-tailwind-template.git
-```
-
-```bash
-# ssh
-git clone git@github.com:cristicretu/ts-next-tailwind-template.git
-```
-
-3. With `create-next-app`
+## 🚀 Quick Start
 
 ```bash
-npx create-next-app -e https://github.com/cristicretu/ts-next-tailwind-template project-name
+# Clone the repository
+git clone https://github.com/your-org/geocube-website.git
+cd geocube-website
+
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Start production server
+pnpm start
 ```
 
-* Tip: if you want to use the version prior to Next.js 13 with the app directory, use:
+## 📐 Site Architecture
+
+### Components Structure
+
+```
+app/
+├── components/
+│   ├── HeroSection.tsx       # Landing hero with stats & CTAs
+│   ├── GeoCubeAssembly.tsx   # Scroll-triggered cube animation
+│   ├── TechStack.tsx         # Technology capabilities showcase
+│   ├── UseCases.tsx          # Persona-based use cases
+│   └── CTASection.tsx        # Final conversion section
+├── globals.css               # Global styles & dark theme
+├── layout.tsx                # App layout with GeoCube metadata
+└── page.tsx                  # Main homepage composition
+```
+
+### Key Sections
+
+1. **Hero Section** - Compelling headline with Terra's 25+ year expertise
+2. **GeoCube Assembly** - Interactive scroll animation showing 6 core modules
+3. **Technology Stack** - Enterprise-grade tech capabilities 
+4. **Use Cases** - Tailored messaging for different stakeholders
+5. **Call to Action** - Demo requests and contact information
+
+## 🎨 Design Philosophy
+
+### Visual Identity
+- **Sophisticated Dark Theme**: Slate 950 base with blue/emerald accents
+- **Data-Driven Aesthetics**: Clean, technical feel with subtle sci-fi elements
+- **Confident Swagger**: Professional yet bold, emphasizing proven results
+- **Enterprise Trust**: Showcasing major clients (Kazatomprom, Rio Tinto, Glencore)
+
+### Animation Strategy
+- **Scroll-Tied Storytelling**: GeoCube assembly reveals capabilities progressively
+- **Subtle Interactions**: Hover effects and micro-animations enhance UX
+- **Performance First**: Optimized animations that don't compromise loading speed
+- **Accessibility**: Respects user motion preferences
+
+## 📊 Key Metrics Highlighted
+
+- **1,300+** Soviet geological reports digitized
+- **60-85%** anomaly detection accuracy  
+- **85%** cost reduction in exploration
+- **25+ years** Terra Exploration expertise
+
+## 🌟 Client Showcase
+
+Featuring trusted partnerships with:
+- Kazatomprom (Kazakhstan's national atomic company)
+- Rio Tinto (Global mining leader)
+- Glencore (Commodity trading & mining)
+- ERG (Eurasian Resources Group)
+- Technical partners: Airbus, Maxar, SpaceWill
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
 ```bash
-npx create-next-app -e https://github.com/cristicretu/ts-next-tailwind-template/tree/1ac5d6dd4157ea3c7cc89f14fbfbf01ab0b495fc project-name
+# Deploy to Vercel
+vercel --prod
 ```
 
-Install the required packages and run the template
+### Environment Variables
+```env
+NEXT_PUBLIC_SITE_URL=https://geocube.terra.is
+NEXT_PUBLIC_ANALYTICS_ID=your_analytics_id
+```
+
+## 📱 Mobile Optimization
+
+- **Mobile-First Design**: Optimized for touch interfaces
+- **Responsive Grid**: Adapts seamlessly across devices
+- **Touch Animations**: Scroll-based interactions work on mobile
+- **Performance**: Optimized images and lazy loading
+
+## 🔧 Development
+
+### Available Scripts
 
 ```bash
-cd project-name
-npm install
-# yarn install
-# pnpm install
+pnpm dev          # Start development server
+pnpm build        # Build for production  
+pnpm start        # Start production server
+pnpm lint         # Run ESLint
+pnpm lint:fix     # Fix linting issues
+pnpm format       # Format with Prettier
 ```
 
-## Included
+### Code Quality
+- **ESLint** with Next.js and TypeScript configs
+- **Prettier** for consistent formatting
+- **Husky** pre-commit hooks
+- **TypeScript** for type safety
 
-### Custom classNames function
-> Under `/lib/classNames`
+## 🎯 YC Application Ready
 
-### Packages
+This website is specifically designed to impress Y Combinator investors:
 
-1. Next-themes: An abstraction for themes in your Next.js app
-2. react-use: react-hooks
-3. Framer Motion: animation library
+✅ **Professional Polish**: Enterprise-grade design and functionality  
+✅ **Clear Value Prop**: Immediate understanding of GeoCube's impact  
+✅ **Proven Traction**: Showcases major clients and concrete results  
+✅ **Technical Depth**: Demonstrates sophisticated AI/ML capabilities  
+✅ **Market Positioning**: Positions as energy transition enabler  
+✅ **Trust Indicators**: 25+ years expertise, SOC 2 compliance  
 
-### Custom globals.css
+## 📞 Contact
 
-1. custom underline
-2. vercel navbar
-3. removes firefox, edge and ie. bugs with overflows
+**Terra Exploration**
+- Email: hello@terra.is
+- Location: Astana, Kazakhstan
+- Website: [geocube.terra.is](https://geocube.terra.is)
 
-### Absolute Imports
+---
 
-```tsx
-import TextField from '../../../ui/TextField.tsx'
-```
-
-changes to
-
-```tsx
-import TextField from 'uis/TextField.tsx'
-```
-
-### SEO optimization found in `Container.tsx`
-
-### Folder structuring & organization
-
-> Under `/ui/` & `/public/`
-
-### Self Hosted Inter Font
-
-> Under `/public/fonts/`
-
-### 404 Page
-
-### Favicons and more configs
-
-> Under `/public/static/favicons/`
-
-![preview](https://cdn.discordapp.com/attachments/797485737272541250/952211815046197278/Frame_7.png)
+Built with 💎 by Terra Exploration - Transforming mineral exploration through AI-powered geological intelligence.
