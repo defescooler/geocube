@@ -43,26 +43,28 @@ export default function FAQs() {
     ]
 
     return (
-        <section className="py-16 md:py-24 bg-gray-900">
-            <div className="mx-auto max-w-5xl px-4 md:px-6">
+        <section className="py-12 sm:py-16 md:py-24 bg-gray-900">
+            <div className="mx-auto max-w-5xl px-4 sm:px-6">
                 <div className="mx-auto max-w-xl text-center">
-                    <h2 className="text-balance text-3xl font-bold md:text-4xl lg:text-5xl text-white">Frequently Asked Questions</h2>
-                    <p className="text-gray-300 mt-4 text-balance">Discover quick and comprehensive answers to common questions about our platform, services, and features.</p>
+                    <h2 className="text-balance text-2xl sm:text-3xl font-bold md:text-4xl lg:text-5xl text-white">Frequently Asked Questions</h2>
+                    <p className="text-gray-300 mt-3 sm:mt-4 text-balance text-sm sm:text-base">Discover quick and comprehensive answers to common questions about our platform, services, and features.</p>
                 </div>
 
-                <div className="mx-auto mt-12 max-w-xl">
+                <div className="mx-auto mt-8 sm:mt-12 max-w-xl">
                     <Accordion
                         type="single"
                         collapsible
-                        className="bg-gray-800 w-full rounded-2xl border border-gray-700 px-8 py-3 shadow-sm">
+                        className="bg-gray-800 w-full rounded-xl sm:rounded-2xl border border-gray-700 px-4 sm:px-8 py-3 shadow-sm">
                         {faqItems.map((item) => (
                             <AccordionItem
                                 key={item.id}
                                 value={item.id}
                                 className="border-gray-700">
-                                <AccordionTrigger className="cursor-pointer text-base hover:no-underline text-white hover:text-emerald-400">{item.question}</AccordionTrigger>
+                                <AccordionTrigger className="cursor-pointer text-sm sm:text-base hover:no-underline text-white hover:text-emerald-400 touch-manipulation text-left">
+                                    {item.question}
+                                </AccordionTrigger>
                                 <AccordionContent>
-                                    <p className="text-base text-gray-300">{item.answer}</p>
+                                    <p className="text-sm sm:text-base text-gray-300 leading-relaxed">{item.answer}</p>
                                 </AccordionContent>
                             </AccordionItem>
                         ))}

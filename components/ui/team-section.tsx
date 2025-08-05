@@ -20,6 +20,18 @@ interface TeamMember {
 }
 
 const leaders: TeamMember[] = [
+    {
+        id: 'leader-2',
+        name: 'Boris Geldyyev',
+        role: 'CSO & Founder',
+        briefDescription: 'Ph.D. in Geography and Environmental Sciences, Kazakh National University',
+        longDescription: 'CEO of Terra GIS with 20+ years in remote sensing, spectral mapping, and terrain analysis. Boris anchors GeoCube\'s geoscience logic — transforming satellite data into field-ready mineral intelligence.',
+        image: '/images/team/boris.jpeg',
+        links: {
+          linkedin: 'https://www.linkedin.com/in/boris-geldyyev-8a325016/',
+          email: 'boris@geocube.kz'
+        }
+      },
   {
     id: 'leader-1',
     name: 'Dastan Kozhabekov',
@@ -30,18 +42,6 @@ const leaders: TeamMember[] = [
     links: {
       linkedin: 'https://www.linkedin.com/in/dastan-kozhabekov-793b413/',
       email: 'dastan@geocube.kz'
-    }
-  },
-  {
-    id: 'leader-2',
-    name: 'Boris Geldyyev',
-    role: 'CSO & Co-Founder',
-    briefDescription: 'Ph.D. in Geography and Environmental Sciences, Kazakh National University',
-    longDescription: 'CEO of Terra GIS with 20+ years in remote sensing, spectral mapping, and terrain analysis. Boris anchors GeoCube\'s geoscience logic — transforming satellite data into field-ready mineral intelligence.',
-    image: '/images/team/boris.png',
-    links: {
-      linkedin: 'https://www.linkedin.com/in/boris-geldyyev-8a325016/',
-      email: 'boris@geocube.kz'
     }
   }
 ];

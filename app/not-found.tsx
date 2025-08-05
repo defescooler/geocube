@@ -1,77 +1,60 @@
+'use client'
+
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { ArrowLeft, Home, Search } from 'lucide-react'
+import { Home, ArrowRight } from 'lucide-react'
+import { BackgroundPaths } from '@/components/ui/background-paths'
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center px-4">
-      <div className="max-w-md w-full text-center">
-        {/* 404 Number */}
-        <div className="mb-8">
-          <h1 className="text-8xl md:text-9xl font-bold text-gray-200 dark:text-gray-700 select-none">
-            404
-          </h1>
-        </div>
+    <div className="min-h-screen bg-gray-900 relative overflow-hidden">
+      <BackgroundPaths title="404" />
+      
+      <div className="absolute inset-0 flex items-center justify-center z-50 px-4">
+        <div className="text-center w-full max-w-md mx-auto">
+          {/* White 404 sign */}
+          <div className="mb-8">
+            <h1 className="text-6xl sm:text-7xl md:text-8xl font-bold text-white">
+              404
+            </h1>
+          </div>
 
-        {/* Main Content */}
-        <div className="mb-8">
-          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white mb-4">
-            Page Not Found
-          </h2>
-          <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
-            The page you're looking for doesn't exist or has been moved.
-          </p>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
-            asChild
-            size="lg"
-            className="bg-emerald-600 hover:bg-emerald-700 text-white font-medium"
-          >
-            <Link href="/" className="flex items-center gap-2">
-              <Home className="w-4 h-4" />
-              Go Home
+          {/* Go Home button */}
+          <div className="mb-8">
+            <Link 
+              href="/" 
+              className="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-emerald-500/25 hover:scale-105"
+            >
+              <Home className="w-5 h-5" />
+              <span>Go Home</span>
+              <ArrowRight className="w-4 h-4" />
             </Link>
-          </Button>
+          </div>
           
-          <Button
-            asChild
-            size="lg"
-            variant="outline"
-            className="border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
-          >
-            <Link href="/#features" className="flex items-center gap-2">
-              <Search className="w-4 h-4" />
-              Explore Features
-            </Link>
-          </Button>
-        </div>
+          {/* Page not found text */}
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+              Page Not Found
+            </h2>
+            <p className="text-gray-300 text-base sm:text-lg max-w-sm mx-auto">
+              The page you're looking for doesn't exist or has been moved.
+            </p>
+          </div>
 
-        {/* Back Button */}
-        <div className="mt-8">
-          <Button
-            asChild
-            variant="ghost"
-            size="sm"
-            className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-          >
-            <Link href="#" className="flex items-center gap-2">
-              <ArrowLeft className="w-4 h-4" />
-              Go Back
-            </Link>
-          </Button>
-        </div>
-
-        {/* Decorative Element */}
-        <div className="mt-16">
-          <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-emerald-100 to-emerald-200 dark:from-emerald-900/20 dark:to-emerald-800/20 flex items-center justify-center">
-            <div className="w-12 h-12 rounded-full bg-emerald-500/20 dark:bg-emerald-400/20 flex items-center justify-center">
-              <div className="w-6 h-6 rounded-full bg-emerald-500 dark:bg-emerald-400"></div>
+          {/* Decorative dots */}
+          <div className="mt-8 flex justify-center">
+            <div className="flex space-x-2">
+              <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+              <div className="w-2 h-2 bg-emerald-300 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Background orbs */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-emerald-500/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
     </div>
   )

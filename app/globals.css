@@ -45,6 +45,9 @@
   html {
     @apply max-h-screen antialiased;
     scroll-behavior: smooth;
+    /* Mobile optimizations */
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
   }
 
   * {
@@ -53,6 +56,23 @@
 
   body {
     @apply m-0 p-0 font-sans;
+    /* Mobile optimizations */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Mobile touch optimizations */
+  @media (hover: none) and (pointer: coarse) {
+    button, a, [role="button"] {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+
+  /* Prevent zoom on input focus on iOS */
+  input, textarea, select {
+    font-size: 16px;
   }
 
   pre::-webkit-scrollbar {
@@ -109,14 +129,117 @@
     animation: move 20s linear infinite;
   }
 
+  /* Custom gradient animations for YC-style effects */
+  @keyframes gradient-x {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes gradient-y {
+    0%, 100% {
+      background-position: 50% 0%;
+    }
+    50% {
+      background-position: 50% 100%;
+    }
+  }
+
+  .animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient-x 8s ease infinite;
+  }
+
+  .animate-gradient-y {
+    background-size: 200% 200%;
+    animation: gradient-y 6s ease infinite;
+  }
+
+  /* Custom animations for 404 page */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.2);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out 0.2s both;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.6s ease-out 0.4s both;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.8s ease-out 0.6s both;
+  }
+
+  .animate-fade-in-delayed {
+    animation: fade-in 1s ease-out 0.8s both;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow-delayed {
+    animation: pulse-slow 6s ease-in-out infinite;
+  }
+
+  /* Mobile-optimized button styles */
   button {
     @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+    /* Mobile touch optimizations */
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 
   button {
     @apply focus:ring-emerald-500;
   }
 
+  /* Mobile-optimized text styles */
   .text-primary {
     @apply text-gray-900 dark:text-white;
   }
@@ -133,6 +256,7 @@
     @apply text-gray-400 dark:text-gray-600;
   }
 
+  /* Mobile-optimized card styles */
   .flip-card {
     perspective: 1000px;
   }
@@ -161,6 +285,209 @@
 
   .flip-card-back {
     transform: rotateY(180deg);
+  }
+
+  /* Mobile-specific optimizations */
+  @media (max-width: 640px) {
+    /* Reduce motion for better performance on mobile */
+    .motion-reduce\:transform-none {
+      transform: none !important;
+    }
+    
+    .motion-reduce\:transition-none {
+      transition: none !important;
+    }
+    
+    /* Optimize scrolling on mobile */
+    .overflow-x-hidden {
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Ensure hero section background is visible on mobile */
+    .aspect-\[2\/3\] {
+      aspect-ratio: 2/3;
+    }
+
+    /* Improve mobile menu visibility */
+    .fixed.inset-0.z-50 {
+      z-index: 9999;
+    }
+
+    /* Optimize image loading for mobile */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Better touch targets for mobile */
+    .touch-manipulation {
+      touch-action: manipulation;
+    }
+
+    /* Improve text readability on mobile */
+    .text-4xl {
+      font-size: 2rem;
+      line-height: 2.5rem;
+    }
+
+    .text-5xl {
+      font-size: 2.5rem;
+      line-height: 3rem;
+    }
+
+    /* Optimize logo display on mobile */
+    .h-6 {
+      height: 1.5rem;
+    }
+
+    .h-8 {
+      height: 2rem;
+    }
+
+    /* Improve mobile menu backdrop */
+    .bg-black\/50 {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    /* Better mobile menu positioning */
+    .fixed.inset-y-0.right-0 {
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+  }
+
+  /* Additional mobile optimizations for hero section */
+  @media (max-width: 768px) {
+    /* Ensure proper spacing on mobile */
+    .py-20 {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+
+    .py-28 {
+      padding-top: 7rem;
+      padding-bottom: 7rem;
+    }
+
+    /* Optimize hero text for mobile */
+    .text-balance {
+      text-wrap: balance;
+    }
+
+    /* Better mobile input styling */
+    input[type="email"] {
+      font-size: 16px;
+      -webkit-appearance: none;
+      border-radius: 9999px;
+    }
+
+    /* Improve mobile button styling */
+    .h-12 {
+      height: 3rem;
+    }
+
+    .rounded-full {
+      border-radius: 9999px;
+    }
+
+    /* Enhanced mobile button styling */
+    .shadow-lg {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .hover\:shadow-xl:hover {
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Mobile-specific button animations */
+    .transform {
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .hover\:scale-105:hover {
+      transform: scale(1.02);
+    }
+
+    .active\:scale-95:active {
+      transform: scale(0.98);
+    }
+
+    /* Better mobile button spacing */
+    .gap-4 > * + * {
+      margin-top: 1rem;
+    }
+
+    /* Mobile-optimized backdrop blur */
+    .backdrop-blur-sm {
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+    /* Enhanced mobile button colors */
+    .bg-emerald-600 {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    }
+
+    .hover\:bg-emerald-700:hover {
+      background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+    }
+
+    /* Mobile button border improvements */
+    .border-emerald-500 {
+      border-color: rgba(16, 185, 129, 0.8);
+    }
+
+    /* Mobile input field improvements */
+    .border-white\/30 {
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .focus\:border-emerald-500:focus {
+      border-color: #10b981;
+    }
+
+    /* Mobile placeholder text improvements */
+    .placeholder\:text-white\/60::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Infinite slider mobile optimizations */
+    .overflow-hidden {
+      overflow: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .w-max {
+      width: max-content;
+    }
+
+    /* Ensure smooth animations on mobile */
+    .motion-safe\:animate-pulse {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    /* Optimize logo display for mobile slider */
+    .h-6 {
+      height: 1.5rem;
+    }
+
+    .h-8 {
+      height: 2rem;
+    }
+
+    .h-12 {
+      height: 3rem;
+    }
+
+    /* Ensure proper gap spacing for mobile slider */
+    .gap-12 {
+      gap: 3rem;
+    }
+
+    .gap-20 {
+      gap: 5rem;
+    }
   }
 }
 

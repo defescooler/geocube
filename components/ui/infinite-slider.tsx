@@ -1,6 +1,6 @@
 'use client';
 import { cn } from '@/lib/utils';
-import { useMotionValue, animate, motion } from 'framer-motion';
+import { useMotionValue, motion } from 'motion/react';
 import { useState, useEffect } from 'react';
 import useMeasure from 'react-use-measure';
 
@@ -27,51 +27,47 @@ export function InfiniteSlider({
   speed = 40,
   speedOnHover = 20,
 }: InfiniteSliderProps) {
-  const [currentDuration, setCurrentDuration] = useState(duration);
+  const [currentSpeed, setCurrentSpeed] = useState(speed);
   const [ref, { width, height }] = useMeasure();
   const translation = useMotionValue(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
   const [key, setKey] = useState(0);
 
   useEffect(() => {
-    let controls;
+    let animationId: number;
     const size = direction === 'horizontal' ? width : height;
     const contentSize = size + gap;
-    const from = reverse ? -contentSize / 2 : 0;
-    const to = reverse ? 0 : -contentSize / 2;
-
-    if (isTransitioning) {
-      controls = animate(translation, [translation.get(), to], {
-        ease: 'linear',
-        duration:
-          currentDuration * Math.abs((translation.get() - to) / contentSize),
-        onComplete: () => {
-          setIsTransitioning(false);
-          setKey((prevKey) => prevKey + 1);
-        },
-      });
-    } else {
-      controls = animate(translation, [from, to], {
-        ease: 'linear',
-        duration: currentDuration,
-        repeat: Infinity,
-        repeatType: 'loop',
-        repeatDelay: 0,
-        onRepeat: () => {
-          translation.set(from);
-        },
-      });
+    
+    if (size > 0) {
+      // Start animation immediately with logos visible
+      const animate = () => {
+        const currentValue = translation.get();
+        const step = (currentSpeed / 100) * (reverse ? -1 : 1);
+        
+        translation.set(currentValue + step);
+        
+        // Infinite carousel effect - reset when logos move completely out of view
+        if (reverse ? currentValue <= -contentSize : currentValue >= contentSize) {
+          translation.set(reverse ? 0 : -contentSize);
+        }
+        
+        animationId = requestAnimationFrame(animate);
+      };
+      
+      // Start animation immediately
+      animationId = requestAnimationFrame(animate);
     }
 
-    return controls?.stop;
+    return () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
   }, [
-    key,
     translation,
-    currentDuration,
+    currentSpeed,
     width,
     height,
     gap,
-    isTransitioning,
     direction,
     reverse,
   ]);
@@ -79,12 +75,10 @@ export function InfiniteSlider({
   const hoverProps = durationOnHover
     ? {
         onHoverStart: () => {
-          setIsTransitioning(true);
-          setCurrentDuration(durationOnHover);
+          setCurrentSpeed(speedOnHover);
         },
         onHoverEnd: () => {
-          setIsTransitioning(true);
-          setCurrentDuration(duration);
+          setCurrentSpeed(speed);
         },
       }
     : {};
