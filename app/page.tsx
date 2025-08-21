@@ -1,45 +1,55 @@
 'use client';
 
-import HeroSectionShader from '@/components/sections/hero-section-shader';
+import React from 'react';
 import UnifiedNavbar from '@/components/layout/unified-navbar';
-import LogoMarquee from '@/components/shared/logo-marquee';
+import NewFooter from '@/components/layout/new-footer';
+import HeroSection from '@/components/sections/hero-section-updated';
+import ValuePropositionSection from '@/components/sections/value-proposition-section';
 import LayeredVisualization from '@/components/features/layered-visualization';
+import ProductsSection from '@/components/sections/products-section';
 import TeamSection from '@/components/sections/team-section';
-import Footer from '@/components/layout/footer';
+import CTASection from '@/components/sections/cta-section';
 
-
-
+/**
+ * Terra Intelligence Systems Landing Page Structure
+ * 
+ * 1. Hero - Terra Intelligence Systems focus
+ * 2. Value Proposition - почему мы лучше
+ * 3. Services - LayeredImagesStack (5 услуг)
+ * 4. Solutions - GeoCube + другие продукты
+ * 5. Social Proof - клиенты и партнёры
+ * 6. Team - экспертиза
+ * 7. CTA - Консультация/Партнёрство
+ */
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-black">
       {/* Unified Navbar with transparent variant */}
       <UnifiedNavbar variant="transparent" />
       
-      {/* 1. Hero section - Separate background for images */}
-      <div className="relative">
-        <HeroSectionShader />
-      </div>
+      {/* 1. Hero section with Terra Intelligence Systems focus */}
+      <HeroSection />
       
-      {/* Content sections with unified gradient background */}
-      <div className="bg-gradient-to-b from-green-900 via-gray-900 to-black">
-        {/* 2. Logos */}
-        <div className="relative">
-          <LogoMarquee />
-        </div>
-        
-        {/* 3. Наши геологические услуги */}
-        <div className="relative">
-          <LayeredVisualization />
-        </div>
-        
-        {/* 4. Команда */}
-        <div className="relative">
-          <TeamSection />
-        </div>
-        
-        {/* 5. Футер */}
-        <Footer />
-      </div>
+      {/* 2. Value Proposition section with metrics */}
+      <ValuePropositionSection />
+      
+      {/* 3. Services section with LayeredImagesStack */}
+      <LayeredVisualization className="bg-black" />
+      
+      {/* 4. Products section with GeoCube as flagship */}
+      <ProductsSection />
+      
+      {/* 5. Social Proof section - clients and partners */}
+      {/* <SocialProofSection /> - will be created if needed */}
+      
+      {/* 6. Team Section - expertise */}
+      <TeamSection />
+      
+      {/* 7. CTA section - consultation/partnership */}
+      <CTASection />
+      
+      {/* New Footer */}
+      <NewFooter />
     </div>
   );
 }

@@ -5,6 +5,9 @@ import Image from 'next/image'
 import { Menu, X, ChevronRight } from 'lucide-react'
 import { useScroll, motion } from 'motion/react'
 import { cn } from '@/lib/utils'
+import { useLanguage } from '@/lib/language-context'
+import { getTranslation } from '@/lib/i18n'
+import LanguageSwitcher from '@/components/ui/language-switcher'
 
 export interface UnifiedNavbarProps {
   variant?: 'transparent' | 'solid';
@@ -15,6 +18,7 @@ export default function UnifiedNavbar({ variant = 'solid', className }: UnifiedN
   const [menuState, setMenuState] = useState(false);
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
+  const { language } = useLanguage();
 
   // Оптимизированный обработчик скролла с дебаунсингом
   useEffect(() => {
@@ -42,12 +46,12 @@ export default function UnifiedNavbar({ variant = 'solid', className }: UnifiedN
 
   // Мемоизированная навигация для предотвращения повторных рендеров
   const navigation = React.useMemo(() => [
-    { name: 'Услуги', href: '/#services' },
-    { name: 'О нас', href: '/#about' },
-    { name: 'Команда', href: '/#team' },
-    { name: 'GeoCube', href: '/geocube' },
-    { name: 'Карьера', href: '/#career' },
-  ], []);
+    { name: getTranslation('nav.services', language), href: '/#services' },
+    { name: getTranslation('nav.about', language), href: '/#about' },
+    { name: getTranslation('nav.team', language), href: '/#team' },
+    { name: getTranslation('nav.geocube', language), href: '/geocube' },
+    { name: getTranslation('nav.careers', language), href: '/careers' },
+  ], [language]);
 
   const handleMenuToggle = useCallback(() => {
     setMenuState(prev => !prev);
@@ -108,12 +112,13 @@ export default function UnifiedNavbar({ variant = 'solid', className }: UnifiedN
               ))}
             </div>
 
-            <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4">
+              <LanguageSwitcher variant="icon" />
               <Link
                 href="mailto:info@geocube.kz"
                 className="inline-flex items-center rounded-full bg-white text-black px-4 py-2 text-sm font-medium transition-all hover:bg-white/90"
               >
-                Связаться с нами <ChevronRight className="ml-1 h-4 w-4" />
+                {getTranslation('nav.contact', language)} <ChevronRight className="ml-1 h-4 w-4" />
               </Link>
             </div>
           </motion.div>
@@ -135,8 +140,19 @@ export default function UnifiedNavbar({ variant = 'solid', className }: UnifiedN
                 </li>
               ))}
             </ul>
+            <div className="mt-6 pt-6 border-t border-gray-700">
+              <div className="flex items-center justify-between">
+                <LanguageSwitcher variant="button" />
+                <Link
+                  href="mailto:info@geocube.kz"
+                  className="text-white hover:text-emerald-400 text-sm font-medium"
+                  onClick={handleMenuClose}
+                >
+                  {getTranslation('nav.contact', language)}
+                </Link>
+              </div>
+            </div>
           </div>
-          {/* Кнопка "Связаться с нами" убрана */}
         </div>
       </nav>
     </header>

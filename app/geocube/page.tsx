@@ -2,8 +2,7 @@ import { Features as Features6 } from '@/components/ui/features-6';
 import TestimonialSection from '@/components/ui/testimonial-section';
 import FAQs from '@/components/ui/faq';
 import { UnifiedNavbar } from '@/components/ui/unified-navbar';
-import RadialOrbitalTimeline from '@/components/ui/radial-orbital-timeline';
-import { Footer } from '@/components/ui/footer-section';
+import NewFooter from '@/components/layout/new-footer';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 
@@ -17,70 +16,13 @@ const FeaturesSectionDemo = dynamic(() => import('@/components/ui/features-secti
   ),
 });
 
-// Данные для RadialOrbitalTimeline
-const timelineData = [
-  {
-    id: 1,
-    title: "Сбор данных",
-    date: "Этап 1",
-    content: "Масштабный сбор геологической информации из всех доступных источников.",
-    category: "Сбор данных",
-    icon: "calendar",
-    relatedIds: [2],
-    status: "completed" as const,
-    energy: 100,
-  },
-  {
-    id: 2,
-    title: "Интеграция данных",
-    date: "Этап 2",
-    content: "Интеллектуальное объединение разнородных данных в единую аналитическую платформу.",
-    category: "Интеграция",
-    icon: "file-text",
-    relatedIds: [1, 3],
-    status: "completed" as const,
-    energy: 90,
-  },
-  {
-    id: 3,
-    title: "Анализ с ИИ",
-    date: "Этап 3",
-    content: "Передовые алгоритмы машинного обучения анализируют комплексные данные.",
-    category: "Анализ",
-    icon: "code",
-    relatedIds: [2, 4],
-    status: "in-progress" as const,
-    energy: 60,
-  },
-  {
-    id: 4,
-    title: "Прогнозирование",
-    date: "Этап 4",
-    content: "Разработка высокоточных прогнозных моделей на основе ИИ-анализа.",
-    category: "Прогноз",
-    icon: "user",
-    relatedIds: [3, 5],
-    status: "pending" as const,
-    energy: 30,
-  },
-  {
-    id: 5,
-    title: "Полевые работы",
-    date: "Этап 5",
-    content: "Проведение целевых полевых исследований для подтверждения прогнозов ИИ.",
-    category: "Полевые работы",
-    icon: "clock",
-    relatedIds: [4],
-    status: "pending" as const,
-    energy: 10,
-  },
-];
+
 
 
 
 export default function GeoCubePage() {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-green-900 via-gray-900 to-black">
+    <div className="flex flex-col min-h-screen bg-black">
       {/* Unified Navbar */}
       <UnifiedNavbar />
       
@@ -100,25 +42,20 @@ export default function GeoCubePage() {
         <Features6 />
       </div>
       
-      {/* 3. Orbital section */}
-      <div className="relative h-screen" id="orbital-timeline">
-        <div className="absolute inset-0">
-          <RadialOrbitalTimeline timelineData={timelineData} />
-        </div>
-      </div>
+
       
-      {/* 4. Testimonial */}
+      {/* 3. Testimonial */}
       <div className="relative">
         <TestimonialSection />
       </div>
       
-      {/* 5. FAQ */}
+      {/* 4. FAQ */}
       <div className="relative">
         <FAQs />
       </div>
       
-      {/* 6. Футер */}
-      <Footer />
+      {/* 5. Футер */}
+      <NewFooter />
     </div>
   );
 } 

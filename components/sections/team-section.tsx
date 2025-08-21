@@ -5,13 +5,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Linkedin, Twitter, Mail } from 'lucide-react';
 import Image from 'next/image';
 import { TeamMember } from '@/types/team';
+import { useLanguage } from '@/lib/language-context';
+import { getTranslation } from '@/lib/i18n';
 
-const leaders: TeamMember[] = [
+const getLeaders = (language: 'ru' | 'en'): TeamMember[] => [
     {
         id: 'leader-2',
         name: 'Борис Гельдыев',
-        role: 'Научный директор и основатель',
-        bio: 'Генеральный директор Terra GIS с более чем 20-летним опытом в области дистанционного зондирования, спектрального картирования и анализа рельефа. Борис отвечает за научную основу GeoCube, преобразуя спутниковые данные в готовую для полевых работ геологическую информацию.',
+        role: language === 'ru' ? 'Научный директор и основатель, 15+ лет в геологии' : 'Chief Science Officer and Founder, 15+ years in geology',
+        bio: language === 'ru' 
+          ? 'Генеральный директор Terra GIS с более чем 20-летним опытом в области дистанционного зондирования, спектрального картирования и анализа рельефа. Руководил более 50 проектами по геологическому картированию в Центральной Азии. Борис отвечает за научную основу GeoCube, преобразуя спутниковые данные в готовую для полевых работ геологическую информацию.'
+          : 'CEO of Terra GIS with over 20 years of experience in remote sensing, spectral mapping, and terrain analysis. Led more than 50 geological mapping projects in Central Asia. Boris is responsible for the scientific foundation of GeoCube, transforming satellite data into geological information ready for field work.',
         image: '/images/team/boris.jpeg',
         socialLinks: {
           linkedin: 'https://www.linkedin.com/in/boris-geldyyev-8a325016/',
@@ -21,8 +25,10 @@ const leaders: TeamMember[] = [
   {
     id: 'leader-1',
     name: 'Дастан Кожабеков',
-    role: 'Генеральный директор и сооснователь',
-    bio: 'Бывший генеральный директор K.I.N.G. Бывший председатель правления АО «Национальный научно-технический центр «Парасат».',
+    role: language === 'ru' ? 'Генеральный директор и сооснователь, ex-Kazatomprom' : 'CEO and Co-founder, ex-Kazatomprom',
+    bio: language === 'ru' 
+      ? 'Бывший генеральный директор K.I.N.G. Бывший председатель правления АО «Национальный научно-технический центр «Парасат». Имеет обширные связи в горнодобывающей отрасли Казахстана и более 15 лет опыта в управлении высокотехнологичными компаниями.'
+      : 'Former CEO of K.I.N.G. Former Chairman of the Board of JSC "National Scientific and Technical Center "Parasat". Has extensive connections in Kazakhstan\'s mining industry and over 15 years of experience in managing high-tech companies.',
     image: '/images/team/dastan.png',
     socialLinks: {
       linkedin: 'https://www.linkedin.com/in/dastan-kozhabekov-793b413/',
@@ -31,12 +37,14 @@ const leaders: TeamMember[] = [
   }
 ];
 
-const executiveBoard: TeamMember[] = [
+const getExecutiveBoard = (language: 'ru' | 'en'): TeamMember[] => [
   {
     id: 'board-1',
     name: 'Д-р Юрий Локтионов',
-    role: 'Финансовый директор и член совета директоров',
-    bio: 'Экономист и технолог с опытом работы в MIT, USC и Boston Sloan Capital. Юрий разрабатывает финансовую модель GeoCube и руководит ее инвестиционной стратегией на стыке ИИ, геологии и инфраструктуры.',
+    role: language === 'ru' ? 'Финансовый директор и член совета директоров' : 'CFO and Board Member',
+    bio: language === 'ru' 
+      ? 'Экономист и технолог с опытом работы в MIT, USC и Boston Sloan Capital. Имеет докторскую степень в области финансов и более 20 лет опыта работы с инвестициями в технологические проекты. Юрий разрабатывает финансовую модель GeoCube и руководит ее инвестиционной стратегией на стыке ИИ, геологии и инфраструктуры.'
+      : 'Economist and technologist with experience at MIT, USC, and Boston Sloan Capital. Holds a PhD in finance and over 20 years of experience in technology project investments. Yuri develops GeoCube\'s financial model and leads its investment strategy at the intersection of AI, geology, and infrastructure.',
     image: '/images/team/yuri.png',
     socialLinks: {
       linkedin: 'https://www.linkedin.com/in/yuri-loktionov-ph-d-cfa-2385732/'
@@ -45,8 +53,10 @@ const executiveBoard: TeamMember[] = [
   {
     id: 'board-2',
     name: 'Д-р Монту Саксена',
-    role: 'Руководитель по исследованиям и член совета директоров',
-    bio: 'Бывший ведущий научный сотрудник Европейского космического агентства с глубокой экспертизой в гиперспектральной съемке и моделировании недр. В GeoCube Монту руководит исследованиями и разработками в области обнаружения аномалий с помощью ИИ и обеспечивает научную строгость всех геологоразведочных процессов.',
+    role: language === 'ru' ? 'Руководитель по исследованиям и член совета директоров' : 'Head of Research and Board Member',
+    bio: language === 'ru' 
+      ? 'Бывший ведущий научный сотрудник Европейского космического агентства с глубокой экспертизой в гиперспектральной съемке и моделировании недр. В GeoCube Монту руководит исследованиями и разработками в области обнаружения аномалий с помощью ИИ и обеспечивает научную строгость всех геологоразведочных процессов.'
+      : 'Former Senior Scientist at the European Space Agency with deep expertise in hyperspectral imaging and subsurface modeling. At GeoCube, Montu leads research and development in AI-powered anomaly detection and ensures scientific rigor in all geological exploration processes.',
     image: '/images/team/montu.png',
     socialLinks: {
       linkedin: 'https://www.linkedin.com/in/siddharthsaxenacambridge/'
@@ -55,8 +65,10 @@ const executiveBoard: TeamMember[] = [
   {
     id: 'board-3',
     name: 'Ануар Альдербаев',
-    role: 'Член совета директоров',
-    bio: 'Опытный юридический профессионал с более чем 20-летним опытом работы в корпоративном, банковском и консалтинговом секторах. Доказанная экспертиза в корпоративном праве, судебных разбирательствах и корпоративном управлении с сильным послужным списком успешных судебных дел и разрешения споров.',
+    role: language === 'ru' ? 'Член совета директоров' : 'Board Member',
+    bio: language === 'ru' 
+      ? 'Опытный юридический профессионал с более чем 20-летним опытом работы в корпоративном, банковском и консалтинговом секторах. Доказанная экспертиза в корпоративном праве, судебных разбирательствах и корпоративном управлении с сильным послужным списком успешных судебных дел и разрешения споров.'
+      : 'Experienced legal professional with over 20 years of experience in corporate, banking, and consulting sectors. Proven expertise in corporate law, litigation, and corporate governance with a strong track record of successful court cases and dispute resolution.',
     image: '/images/team/anuar.png',
     socialLinks: {
       linkedin: 'https://www.linkedin.com/in/anuar-alderbayev-mciarb-26334467/',
@@ -112,10 +124,11 @@ SocialLinks.displayName = 'SocialLinks';
 interface TeamMemberCardProps {
   member: TeamMember;
   index: number;
+  language: 'ru' | 'en';
 }
 
 // Memoized team member card component
-const TeamMemberCard = memo(({ member, index }: TeamMemberCardProps) => {
+const TeamMemberCard = memo(({ member, index, language }: TeamMemberCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -125,10 +138,10 @@ const TeamMemberCard = memo(({ member, index }: TeamMemberCardProps) => {
     setIsAnimating(true);
     setIsExpanded(prev => !prev);
     
-    // Clear animation state after animation completes
+    // Clear animation state after animation completes - increased to match new duration
     setTimeout(() => {
       setIsAnimating(false);
-    }, 800);
+    }, 1100);
   }, [isAnimating]);
 
   const fallbackInitials = useMemo(() => {
@@ -190,7 +203,7 @@ const TeamMemberCard = memo(({ member, index }: TeamMemberCardProps) => {
               : 'text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300'
           }`}
         >
-          <span>{isExpanded ? 'Свернуть' : 'Подробнее'}</span>
+          <span>{isExpanded ? (language === 'ru' ? 'Свернуть' : 'Collapse') : (language === 'ru' ? 'Подробнее' : 'Learn More')}</span>
           <motion.div
             animate={{ rotate: isExpanded ? 180 : 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -213,8 +226,9 @@ const TeamMemberCard = memo(({ member, index }: TeamMemberCardProps) => {
               }}
               exit={{ opacity: 0, maxHeight: 0, paddingTop: 0, paddingBottom: 0 }}
               transition={{ 
-                duration: 0.7,
-                ease: [0.16, 1, 0.3, 1] // Custom easing for smoother animation
+                duration: 1.0,
+                ease: [0.04, 0.62, 0.23, 0.98], // Improved easing for smoother animation
+                opacity: { duration: 0.6 } // Separate timing for opacity
               }}
               className="overflow-hidden border-t border-gray-200 dark:border-gray-700"
             >
@@ -251,6 +265,8 @@ const SectionHeader = memo(({ title, description, delay = 0 }: { title: string; 
 SectionHeader.displayName = 'SectionHeader';
 
 export default function TeamSection() {
+  const { language } = useLanguage();
+  
   // Memoize the main header animation
   const mainHeaderAnimation = useMemo(() => ({
     initial: { opacity: 0, y: 20 },
@@ -258,8 +274,11 @@ export default function TeamSection() {
     transition: { duration: 0.6 }
   }), []);
 
+  const leaders = getLeaders(language);
+  const executiveBoard = getExecutiveBoard(language);
+
   return (
-    <section id="team" className="py-16 md:py-24">
+    <section id="team" className="py-16 md:py-24 bg-black">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <motion.div
@@ -267,24 +286,27 @@ export default function TeamSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-             Наша команда
+            {language === 'ru' ? 'Команда, которая воплотит это в жизнь' : 'The Team That Will Make It Happen'}
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-             Объединяем геологическую экспертизу с передовыми технологиями. Опыт работы в горнодобывающей отрасли Казахстана и инновационных компаниях Кремниевой долины.
+            {language === 'ru' 
+              ? 'Уникальное сочетание геологической экспертизы с передовыми технологиями. Десятилетия опыта работы в горнодобывающей отрасли Казахстана и инновационных компаниях Кремниевой долины.'
+              : 'Unique combination of geological expertise with cutting-edge technologies. Decades of experience in Kazakhstan\'s mining industry and Silicon Valley innovation companies.'
+            }
           </p>
         </motion.div>
 
         {/* Leaders Section */}
         <div className="mb-16">
           <SectionHeader 
-             title="Руководство"
-             description="Основатели, определяющие стратегию и развитие GeoCube."
-              delay={0.2}
-            />
+            title={language === 'ru' ? 'Руководство' : 'Leadership'}
+            description={language === 'ru' ? 'Основатели, определяющие стратегию и развитие GeoCube.' : 'Founders defining GeoCube\'s strategy and development.'}
+            delay={0.2}
+          />
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {leaders.map((member, index) => (
-              <TeamMemberCard key={member.id} member={member} index={index} />
+              <TeamMemberCard key={member.id} member={member} index={index} language={language} />
             ))}
           </div>
         </div>
@@ -292,14 +314,14 @@ export default function TeamSection() {
         {/* Executive Board Section */}
         <div>
           <SectionHeader 
-             title="Совет директоров"
-             description="Стратегические советники, обеспечивающие отраслевую экспертизу и корпоративное управление."
-              delay={0.4}
-            />
+            title={language === 'ru' ? 'Совет директоров' : 'Board of Directors'}
+            description={language === 'ru' ? 'Стратегические советники, обеспечивающие отраслевую экспертизу и корпоративное управление.' : 'Strategic advisors providing industry expertise and corporate governance.'}
+            delay={0.4}
+          />
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {executiveBoard.map((member, index) => (
-              <TeamMemberCard key={member.id} member={member} index={index + 2} />
+              <TeamMemberCard key={member.id} member={member} index={index + 2} language={language} />
             ))}
           </div>
         </div>

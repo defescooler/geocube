@@ -1,8 +1,9 @@
 'use client';
 
-import React from 'react';
-import { BarChart3, DollarSign, Cpu } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { BarChart3, DollarSign, Cpu, ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { motion, AnimatePresence } from 'motion/react';
 
 interface LayeredVisualizationProps {
   className?: string;
@@ -14,16 +15,34 @@ interface LayerData {
   title: string;
 }
 
-const layersData: LayerData[] = [
-  { id: 1, image: "/images/layers/1.jpg", title: "Спутниковая съёмка" },
-  { id: 2, image: "/images/layers/2.jpg", title: "Топографическая карта" },
-  { id: 3, image: "/images/layers/3.jpg", title: "Метеорологические данные" },
-  { id: 4, image: "/images/layers/4.jpg", title: "Геологическая съёмка" },
-  { id: 5, image: "/images/layers/5.jpg", title: "Землепользование" },
-  { id: 6, image: "/images/layers/6.jpg", title: "Транспортная сеть" },
+// Services carousel data
+const servicesData = [
+  { id: 1, image: "/images/services/1.jpg", title: "Сбор данных", description: "Комплексный сбор геологической информации: спутниковые снимки, геофизические данные, исторические исследования" },
+  { id: 2, image: "/images/services/2.jpg", title: "Интеграция данных", description: "Объединение разнородных источников в единую платформу для комплексного анализа территорий" },
+  { id: 3, image: "/images/services/3.jpg", title: "ИИ-анализ", description: "Машинное обучение для выявления скрытых геологических паттернов и прогнозирования месторождений" },
+  { id: 4, image: "/images/services/4.jpg", title: "Прогнозирование", description: "Построение предиктивных моделей для оценки перспективности участков и планирования инвестиций" },
+  { id: 5, image: "/images/services/5.jpg", title: "Полевые работы", description: "Подтверждение прогнозов командой опытных геологов с использованием современного оборудования" },
 ];
 
 export default function LayeredVisualization({ className }: LayeredVisualizationProps) {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Auto-advance carousel
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % servicesData.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % servicesData.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + servicesData.length) % servicesData.length);
+  };
+
   return (
     <div 
       className={cn(
@@ -36,23 +55,80 @@ export default function LayeredVisualization({ className }: LayeredVisualization
         {/* Title and Description */}
         <div className="text-center mb-8">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-normal text-white leading-tight mb-4">
-            Наши <span className="text-[#079669]">геологические услуги</span>
+            Полный спектр <span className="text-[#079669]">геологоразведочных услуг</span>
           </h2>
           <p className="text-gray-400 text-lg font-light max-w-3xl mx-auto">
-            Полный спектр решений для геологоразведки и недропользования
+            От сбора данных до полевого подтверждения находок
           </p>
         </div>
 
-        {/* Simple Layered Stack Visualization */}
-        <div className="flex justify-center mb-8">
-          <div className="relative w-full max-w-2xl">
-            <div className="relative w-full h-96">
-              <img 
-                src="/images/layers/layers.png" 
-                alt="Геологические слои данных" 
-                className="w-full h-full object-contain"
+        {/* Services Carousel */}
+        <div className="relative max-w-4xl mx-auto mb-12">
+          <div className="relative h-[500px] rounded-3xl overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0, x: 300 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -300 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="absolute inset-0"
+              >
+                <img
+                  src={servicesData[currentSlide].image}
+                  alt={servicesData[currentSlide].title}
+                  className="w-full h-full object-cover"
+                />
+                {/* Overlay with gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                
+                {/* Content overlay */}
+                <div className="absolute bottom-0 left-0 right-0 p-8">
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3, duration: 0.5 }}
+                  >
+                    <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4">
+                      {servicesData[currentSlide].title}
+                    </h3>
+                    <p className="text-gray-200 text-lg max-w-3xl">
+                      {servicesData[currentSlide].description}
+                    </p>
+                  </motion.div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Navigation arrows */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full p-3 transition-all duration-300 group"
+            >
+              <ChevronLeft className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full p-3 transition-all duration-300 group"
+            >
+              <ChevronRight className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+            </button>
+          </div>
+
+          {/* Dots indicator */}
+          <div className="flex justify-center mt-6 space-x-2">
+            {servicesData.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={cn(
+                  "w-3 h-3 rounded-full transition-all duration-300",
+                  index === currentSlide
+                    ? "bg-[#079669] scale-125"
+                    : "bg-gray-600 hover:bg-gray-500"
+                )}
               />
-            </div>
+            ))}
           </div>
         </div>
 
@@ -65,7 +141,7 @@ export default function LayeredVisualization({ className }: LayeredVisualization
             </div>
             <h3 className="text-white text-lg font-normal mb-3">Сбор данных</h3>
             <p className="text-gray-400 text-sm font-light leading-relaxed">
-              Масштабный сбор геологической информации из всех доступных источников
+              Комплексный сбор геологической информации: спутниковые снимки, геофизические данные, исторические исследования
             </p>
           </div>
 
@@ -76,7 +152,7 @@ export default function LayeredVisualization({ className }: LayeredVisualization
             </div>
             <h3 className="text-white text-lg font-normal mb-3">Интеграция данных</h3>
             <p className="text-gray-400 text-sm font-light leading-relaxed">
-              Объединение разнородных данных в единую аналитическую платформу
+              Объединение разнородных источников в единую платформу для комплексного анализа территорий
             </p>
           </div>
 
@@ -85,9 +161,9 @@ export default function LayeredVisualization({ className }: LayeredVisualization
             <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#079669]/10 text-[#079669] mb-4 group-hover:bg-[#079669]/20 transition-colors duration-300">
               <Cpu className="w-6 h-6" />
             </div>
-            <h3 className="text-white text-lg font-normal mb-3">Анализ с ИИ</h3>
+            <h3 className="text-white text-lg font-normal mb-3">ИИ-анализ</h3>
             <p className="text-gray-400 text-sm font-light leading-relaxed">
-              Алгоритмы машинного обучения для выявления скрытых закономерностей
+              Машинное обучение для выявления скрытых геологических паттернов и прогнозирования месторождений
             </p>
           </div>
 
@@ -98,7 +174,7 @@ export default function LayeredVisualization({ className }: LayeredVisualization
             </div>
             <h3 className="text-white text-lg font-normal mb-3">Прогнозирование</h3>
             <p className="text-gray-400 text-sm font-light leading-relaxed">
-              Высокоточные модели для определения перспективных участков
+              Построение предиктивных моделей для оценки перспективности участков и планирования инвестиций
             </p>
           </div>
 
@@ -109,7 +185,7 @@ export default function LayeredVisualization({ className }: LayeredVisualization
             </div>
             <h3 className="text-white text-lg font-normal mb-3">Полевые работы</h3>
             <p className="text-gray-400 text-sm font-light leading-relaxed">
-              Исследования командой опытных геологов и инженеров
+              Подтверждение прогнозов командой опытных геологов с использованием современного оборудования
             </p>
           </div>
         </div>

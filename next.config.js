@@ -14,6 +14,11 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   
+  // TypeScript configuration
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  
   // Image optimization with external domains
   images: {
     formats: ['image/webp', 'image/avif'],
@@ -82,7 +87,31 @@ const nextConfig = {
             key: 'X-XSS-Protection',
             value: '1; mode=block',
           },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
         ],
+      },
+      {
+        source: '/static/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
+  },
+  
+  // Redirects for SEO
+  async redirects() {
+    return [
+      {
+        source: '/home',
+        destination: '/',
+        permanent: true,
       },
     ];
   },

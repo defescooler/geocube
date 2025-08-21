@@ -2,6 +2,7 @@
 
 import { ThemeProvider } from 'next-themes';
 import { ReactNode } from 'react';
+import { LanguageProvider } from '@/lib/language-context';
 
 export default function Providers({ children }: { children: ReactNode }) {
   return (
@@ -10,7 +11,9 @@ export default function Providers({ children }: { children: ReactNode }) {
       defaultTheme="system"
       disableTransitionOnChange
     >
-      {children}
+      <LanguageProvider>
+        {children}
+      </LanguageProvider>
     </ThemeProvider>
   );
 }

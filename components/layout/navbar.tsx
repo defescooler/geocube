@@ -4,11 +4,15 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 import { useScroll } from 'motion/react'
+import { useLanguage } from '@/lib/language-context'
+import { getTranslation } from '@/lib/i18n'
+import LanguageSwitcher from '@/components/ui/language-switcher'
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const { scrollY } = useScroll();
     const [isScrolled, setIsScrolled] = React.useState(false);
+    const { language } = useLanguage();
 
     React.useEffect(() => {
         const unsubscribe = scrollY.on('change', (latest) => {
@@ -18,10 +22,10 @@ export default function Navbar() {
     }, [scrollY]);
 
     const navigation = [
-        { name: 'Функционал', href: '#features' },
-        { name: 'GeoCube', href: '/geocube' },
-        { name: 'Решение', href: '#solution' },
-        { name: 'Команда', href: '#team' },
+        { name: getTranslation('nav.features', language), href: '#features' },
+        { name: getTranslation('nav.geocube', language), href: '/geocube' },
+        { name: getTranslation('nav.solution', language), href: '#solution' },
+        { name: getTranslation('nav.team', language), href: '#team' },
     ];
 
     const handleMenuToggle = useCallback(() => {
@@ -72,11 +76,12 @@ export default function Navbar() {
                     ))}
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-6">
+                    <LanguageSwitcher variant="icon" />
                     <Link
                         href="mailto:info@geocube.kz"
                         className="text-sm font-semibold leading-6 text-white hover:text-emerald-400 transition-colors"
                     >
-                        Связаться с нами <span aria-hidden="true">→</span>
+                        {getTranslation('nav.contact', language)} <span aria-hidden="true">→</span>
                     </Link>
                 </div>
             </nav>
@@ -123,13 +128,16 @@ export default function Navbar() {
                                     ))}
                                 </div>
                                 <div className="py-6 space-y-2">
-                                    <Link
-                                        href="mailto:info@geocube.kz"
-                                        className="-mx-3 block rounded-lg px-3 py-3 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800 active:bg-gray-100 dark:active:bg-gray-700 transition-colors touch-manipulation"
-                                        onClick={handleMenuClose}
-                                    >
-                                        Связаться с нами
-                                    </Link>
+                                    <div className="flex items-center justify-between px-3 py-3">
+                                        <LanguageSwitcher variant="button" />
+                                        <Link
+                                            href="mailto:info@geocube.kz"
+                                            className="text-base font-semibold leading-7 text-gray-900 dark:text-white hover:text-emerald-400 transition-colors touch-manipulation"
+                                            onClick={handleMenuClose}
+                                        >
+                                            {getTranslation('nav.contact', language)}
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
