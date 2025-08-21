@@ -88,15 +88,6 @@ export default function UnifiedNavbar({ variant = 'solid', className }: UnifiedN
                   height={48}
                   priority
                   sizes="(max-width: 640px) 144px, 180px"
-                  onError={(e) => {
-                    console.error('Failed to load Terra logo');
-                    // Show text fallback
-                    e.currentTarget.style.display = 'none';
-                    const parent = e.currentTarget.parentElement;
-                    if (parent) {
-                      parent.innerHTML = '<span class="text-white text-xl font-bold">Terra</span>';
-                    }
-                  }}
                 />
               </Link>
 

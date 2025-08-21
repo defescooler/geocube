@@ -9,7 +9,7 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://geocube.terra.is'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   authors: [{ name: 'Terra Exploration', url: 'https://terra.is' }],
   category: 'technology',
   creator: 'Terra Exploration',
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
       {
         alt: 'GeoCube - AI-Powered Mineral Intelligence',
         height: 1080,
-        url: 'https://geocube.terra.is/static/images/og.png',
+        url: '/static/images/og.png',
         width: 1920,
       },
     ],
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     siteName: 'GeoCube by Terra Exploration',
     title: 'GeoCube - Precision Mineral Intelligence at Enterprise Scale',
     type: 'website',
-    url: 'https://geocube.terra.is',
+    url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   },
   publisher: 'Terra Exploration',
   robots: {

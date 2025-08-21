@@ -7,7 +7,7 @@ const Logos = {
     <a href="https://www.barrick.com/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity duration-300">
       <img
         className="mx-auto h-12 md:h-16 lg:h-20 w-fit"
-        src="/logos/barrick.svg"
+        src="/logos/Barrick.svg"
         alt="Barrick Logo"
         height="32"
         width="auto"
@@ -40,7 +40,7 @@ const Logos = {
     <a href="https://www.erg.kz/ru" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity duration-300">
       <img
         className="mx-auto h-12 md:h-16 lg:h-20 w-fit"
-        src="/logos/erg-logo.svg"
+        src="/logos/ERG-logo.svg"
         alt="ERG Logo"
         height="32"
         width="auto"
@@ -95,7 +95,7 @@ const Logos = {
     <a href="https://www.airbus.com/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity duration-300">
       <img
         className="mx-auto h-12 md:h-16 lg:h-20 w-fit"
-        src="/logos/airbus_defense_and_space.svg"
+        src="/logos/Airbus_Defense_and_Space.svg"
         alt="Airbus Logo"
         height="32"
         width="auto"
@@ -106,7 +106,7 @@ const Logos = {
     <a href="https://tso.kz/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity duration-300">
       <img
         className="mx-auto h-12 md:h-16 lg:h-20 w-fit"
-        src="/logos/tso.svg"
+        src="/logos/TSO.svg"
         alt="TSO Logo"
         height="32"
         width="auto"
