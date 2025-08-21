@@ -103,6 +103,12 @@ export default function HeroSection() {
             duration: 2.5,
             ease: [0.22, 1, 0.36, 1] // Custom cubic-bezier for smoother fade
           }}
+          onError={(e) => {
+            console.error(`Failed to load background image: ${image}`);
+            // Fallback to gradient if image fails
+            e.currentTarget.style.backgroundImage = 'none';
+            e.currentTarget.style.backgroundColor = '#079669';
+          }}
         >
           {/* Dark green overlay */}
           <div className="absolute inset-0 bg-[#079669]/30"></div>
@@ -197,6 +203,15 @@ export default function HeroSection() {
                     alt={`${partner.name} Logo`}
                     height="32"
                     width="auto"
+                    onError={(e) => {
+                      console.error(`Failed to load logo: ${partner.logo}`);
+                      // Show partner name as fallback
+                      e.currentTarget.style.display = 'none';
+                      const parent = e.currentTarget.parentElement;
+                      if (parent) {
+                        parent.innerHTML = `<span class="text-white text-sm font-medium">${partner.name}</span>`;
+                      }
+                    }}
                   />
                 </a>
               ))}
