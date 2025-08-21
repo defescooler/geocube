@@ -42,14 +42,14 @@ export default function CTASection() {
             
             <div className="relative mx-auto max-w-4xl px-4 sm:px-6 text-center">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 sm:mb-8 drop-shadow-2xl">
-                    Explore 10x Faster <br />
+                    Находите месторождения в 10 раз быстрее <br />
                     <span className="bg-gradient-to-r from-white via-emerald-100 to-green-100 bg-clip-text text-transparent">
-                        with GeoCube
+                        с GeoCube
                     </span>
                 </h2>
                 
                 <p className="text-lg sm:text-xl md:text-2xl text-emerald-50 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed px-4">
-                    Join thousands of geologists and mining professionals already transforming their workflow
+                    Присоединяйтесь к геологам и специалистам, которые уже ускорили свою работу
                 </p>
 
                 {/* Newsletter Signup Form */}
@@ -60,7 +60,7 @@ export default function CTASection() {
                                 type="email"
                                 value={email}
                                 onChange={handleEmailChange}
-                                placeholder="Enter your email"
+                                placeholder="Введите ваш email"
                                 className="w-full px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg bg-white/10 backdrop-blur-sm border-2 border-white/20 rounded-full text-white placeholder-emerald-100 focus:outline-none focus:border-white/40 focus:bg-white/20 transition-all duration-300 touch-manipulation"
                                 required
                             />
@@ -75,12 +75,12 @@ export default function CTASection() {
                             {isSubmitting ? (
                                 <div className="flex items-center justify-center space-x-2">
                                     <div className="w-4 sm:w-5 h-4 sm:h-5 border-2 border-emerald-600 border-t-transparent rounded-full animate-spin"></div>
-                                    <span>Joining...</span>
+                                    <span>Присоединяемся...</span>
                                 </div>
                             ) : isSubmitted ? (
-                                <span className="text-green-600">✓ Joined Successfully!</span>
+                                <span className="text-green-600">✓ Успешно присоединились!</span>
                             ) : (
-                                'Join the Revolution'
+                                'Присоединиться к революции'
                             )}
                         </Button>
                     </form>

@@ -15,19 +15,19 @@ interface Testimonial {
 }
 
 const testimonial: Testimonial = {
-  quote: "GeoCube has revolutionized our exploration workflow. The AI-powered analysis of our legacy data combined with real-time satellite insights has accelerated our discovery process by 10x. It's like having decades of geological expertise at our fingertips.",
+  quote: "GeoCube произвел революцию в наших геологоразведочных процессах. Анализ наших архивных данных с помощью ИИ в сочетании со спутниковой информацией в реальном времени ускорил процесс открытия месторождений в 10 раз. Это как иметь доступ к десятилетиям геологического опыта в один клик.",
   author: {
-    name: "Alexei Petrov",
-    title: "Head of Exploration",
+    name: "Алексей Петров",
+    title: "Руководитель департамента геологоразведки",
     company: "ERG",
     avatar: "/images/team/erg-representative.jpg",
-    initials: "AP"
+    initials: "АП"
   }
 };
 
 export default function TestimonialSection() {
   return (
-    <section className="py-16 md:py-24 bg-black">
+    <section className="py-16 md:py-24">
       <div className="max-w-4xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

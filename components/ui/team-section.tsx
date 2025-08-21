@@ -22,10 +22,10 @@ interface TeamMember {
 const leaders: TeamMember[] = [
     {
         id: 'leader-2',
-        name: 'Boris Geldyyev',
-        role: 'CSO & Founder',
-        briefDescription: 'Ph.D. in Geography and Environmental Sciences, Kazakh National University',
-        longDescription: 'CEO of Terra GIS with 20+ years in remote sensing, spectral mapping, and terrain analysis. Boris anchors GeoCube\'s geoscience logic — transforming satellite data into field-ready mineral intelligence.',
+        name: 'Борис Гельдыев',
+        role: 'Научный директор и основатель',
+        briefDescription: 'Кандидат географических наук, Казахский национальный университет',
+        longDescription: 'Генеральный директор Terra GIS с более чем 20-летним опытом в области дистанционного зондирования, спектрального картирования и анализа рельефа. Борис отвечает за научную основу GeoCube, преобразуя спутниковые данные в готовую для полевых работ геологическую информацию.',
         image: '/images/team/boris.jpeg',
         links: {
           linkedin: 'https://www.linkedin.com/in/boris-geldyyev-8a325016/',
@@ -34,10 +34,10 @@ const leaders: TeamMember[] = [
       },
   {
     id: 'leader-1',
-    name: 'Dastan Kozhabekov',
-    role: 'CEO & Co-Founder',
-    briefDescription: 'MBA, Massachusetts Institute of Technology (MIT)',
-    longDescription: 'Former Director General, K.I.N.G. Former Chairman of the Board, National Scientific and Technical Center "Parasat"',
+    name: 'Дастан Кожабеков',
+    role: 'Генеральный директор и сооснователь',
+    briefDescription: 'MBA, Массачусетский технологический институт (MIT)',
+    longDescription: 'Бывший генеральный директор K.I.N.G. Бывший председатель правления АО «Национальный научно-технический центр «Парасат».',
     image: '/images/team/dastan.png',
     links: {
       linkedin: 'https://www.linkedin.com/in/dastan-kozhabekov-793b413/',
@@ -49,10 +49,10 @@ const leaders: TeamMember[] = [
 const executiveBoard: TeamMember[] = [
   {
     id: 'board-1',
-    name: 'Dr. Yuri Loktionov',
-    role: 'CFO & Member of the Board',
-    briefDescription: 'PhD, Massachusetts Institute of Technology (MIT)',
-    longDescription: 'Economist and technologist with experience across MIT, USC, and Boston Sloan Capital. Yuri designs GeoCube\'s financial model and drives its investment strategy at the intersection of AI, geology, and infrastructure.',
+    name: 'Д-р Юрий Локтионов',
+    role: 'Финансовый директор и член совета директоров',
+    briefDescription: 'PhD, Массачусетский технологический институт (MIT)',
+    longDescription: 'Экономист и технолог с опытом работы в MIT, USC и Boston Sloan Capital. Юрий разрабатывает финансовую модель GeoCube и руководит ее инвестиционной стратегией на стыке ИИ, геологии и инфраструктуры.',
     image: '/images/team/yuri.png',
     links: {
       linkedin: 'https://www.linkedin.com/in/yuri-loktionov-ph-d-cfa-2385732/'
@@ -60,10 +60,10 @@ const executiveBoard: TeamMember[] = [
   },
   {
     id: 'board-2',
-    name: 'Dr. Montu Saxena',
-    role: 'Head of Research & Board Member',
-    briefDescription: 'PhD, University of Cambridge',
-    longDescription: 'Former lead scientist at the European Space Agency with deep expertise in hyperspectral imaging and subsurface modeling. At GeoCube, Montu drives R&D on AI-driven anomaly detection and ensures scientific rigor across all exploratory workflows.',
+    name: 'Д-р Монту Саксена',
+    role: 'Руководитель по исследованиям и член совета директоров',
+    briefDescription: 'PhD, Кембриджский университет',
+    longDescription: 'Бывший ведущий научный сотрудник Европейского космического агентства с глубокой экспертизой в гиперспектральной съемке и моделировании недр. В GeoCube Монту руководит исследованиями и разработками в области обнаружения аномалий с помощью ИИ и обеспечивает научную строгость всех геологоразведочных процессов.',
     image: '/images/team/montu.png',
     links: {
       linkedin: 'https://www.linkedin.com/in/siddharthsaxenacambridge/'
@@ -71,13 +71,14 @@ const executiveBoard: TeamMember[] = [
   },
   {
     id: 'board-3',
-    name: 'Dr. Montu Saxena',
-    role: 'Head of Research & Board Member',
-    briefDescription: 'PhD, University of Cambridge',
-    longDescription: 'Former lead scientist at the European Space Agency with deep expertise in hyperspectral imaging and subsurface modeling. At GeoCube, Montu drives R&D on AI-driven anomaly detection and ensures scientific rigor across all exploratory workflows.',
-    image: '/images/team/montu.png',
+    name: 'Ануар Альдербаев',
+    role: 'Член совета директоров',
+    briefDescription: 'Юрист, Член Chartered Institute of Arbitrators (MCIArb)',
+    longDescription: 'Опытный юридический профессионал с более чем 20-летним опытом работы в корпоративном, банковском и консалтинговом секторах. Доказанная экспертиза в корпоративном праве, судебных разбирательствах и корпоративном управлении с сильным послужным списком успешных судебных дел и разрешения споров. В настоящее время занимает должность Главного юрисконсульта в Kazakhstan Petrochemical Industries Inc. LLP. Ранее работал в качестве Управляющего директора по корпоративной поддержке в Almex Petrochemical LLP и Корпоративного секретаря в JSC National Company "KazMunayGas" (KMG).',
+    image: '/images/team/anuar.png',
     links: {
-      linkedin: 'https://www.linkedin.com/in/siddharthsaxenacambridge/'
+      linkedin: 'https://www.linkedin.com/in/anuar-alderbayev-mciarb-26334467/',
+      email: 'AAlderbayev@hotmail.com'
     }
   },
 ];
@@ -139,7 +140,7 @@ const TeamMemberCard = memo(({ member, index }: { member: TeamMember; index: num
     // Clear animation state after animation completes
     setTimeout(() => {
       setIsAnimating(false);
-    }, 600);
+    }, 800);
   }, [isAnimating]);
 
   const fallbackInitials = useMemo(() => {
@@ -204,7 +205,7 @@ const TeamMemberCard = memo(({ member, index }: { member: TeamMember; index: num
               : 'text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300'
           }`}
         >
-          <span>{isExpanded ? 'Show Less' : 'Read More'}</span>
+          <span>{isExpanded ? 'Свернуть' : 'Подробнее'}</span>
           <motion.div
             animate={{ rotate: isExpanded ? 180 : 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -221,14 +222,14 @@ const TeamMemberCard = memo(({ member, index }: { member: TeamMember; index: num
               initial={{ opacity: 0, maxHeight: 0, paddingTop: 0, paddingBottom: 0 }}
               animate={{ 
                 opacity: 1, 
-                maxHeight: 200,
+                maxHeight: 300,
                 paddingTop: 16,
                 paddingBottom: 0
               }}
               exit={{ opacity: 0, maxHeight: 0, paddingTop: 0, paddingBottom: 0 }}
               transition={{ 
-                duration: 0.5,
-                ease: [0.25, 0.46, 0.45, 0.94]
+                duration: 0.7,
+                ease: [0.16, 1, 0.3, 1] // Custom easing for smoother animation
               }}
               className="overflow-hidden border-t border-gray-200 dark:border-gray-700"
             >
@@ -273,7 +274,7 @@ export default function TeamSection() {
   }), []);
 
   return (
-    <section id="team" className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
+    <section id="team" className="py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <motion.div
@@ -281,22 +282,20 @@ export default function TeamSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Meet Our Team
+             Наша команда
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Our leadership combines deep geological expertise with cutting-edge technology, 
-            bringing decades of experience from Kazakhstan&apos;s mining sector and Silicon Valley&apos;s 
-            most innovative companies.
+             Объединяем геологическую экспертизу с передовыми технологиями. Опыт работы в горнодобывающей отрасли Казахстана и инновационных компаниях Кремниевой долины.
           </p>
         </motion.div>
 
         {/* Leaders Section */}
         <div className="mb-16">
           <SectionHeader 
-            title="Leadership"
-            description="The founding team driving GeoCube's vision and execution."
-            delay={0.2}
-          />
+             title="Руководство"
+             description="Основатели, определяющие стратегию и развитие GeoCube."
+              delay={0.2}
+            />
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {leaders.map((member, index) => (
@@ -308,10 +307,10 @@ export default function TeamSection() {
         {/* Executive Board Section */}
         <div>
           <SectionHeader 
-            title="Executive Board"
-            description="Strategic advisors providing industry expertise and governance oversight."
-            delay={0.4}
-          />
+             title="Совет директоров"
+             description="Стратегические советники, обеспечивающие отраслевую экспертизу и корпоративное управление."
+              delay={0.4}
+            />
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {executiveBoard.map((member, index) => (

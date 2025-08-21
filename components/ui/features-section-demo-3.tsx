@@ -13,7 +13,10 @@ import {
   Layers, 
   Zap,
   TrendingUp,
-  Activity
+  Activity,
+  Cpu,
+  Lock,
+  Sparkles
 } from 'lucide-react';
 
 interface DatasetRow {
@@ -28,34 +31,34 @@ interface DatasetRow {
 const syntheticData: DatasetRow[] = [
   {
     blockId: 'KZ-0911',
-    anomalyType: 'Hydrothermal',
-    source: 'ASTER + Reports',
-    depth: '200–450m',
+    anomalyType: 'Гидротермальная',
+    source: 'ASTER + Отчеты',
+    depth: '200–450м',
     mineralClass: 'Cu + Au',
     certainty: '82%'
   },
   {
     blockId: 'KZ-1047',
-    anomalyType: 'Magnetic',
-    source: 'Landsat-9 + ML',
-    depth: '100–300m',
+    anomalyType: 'Магнитная',
+    source: 'Landsat-9 + МО',
+    depth: '100–300м',
     mineralClass: 'Ni + Co',
     certainty: '90%'
   },
   {
     blockId: 'KZ-0075',
-    anomalyType: 'Radiometric',
-    source: 'WV-3 + Legacy',
-    depth: '50–160m',
+    anomalyType: 'Радиометрическая',
+    source: 'WV-3 + Архивы',
+    depth: '50–160м',
     mineralClass: 'U, Th',
     certainty: '76%'
   },
   {
     blockId: 'KZ-2231',
-    anomalyType: 'Structural',
-    source: 'Vectorized',
-    depth: '300–700m',
-    mineralClass: 'Mo, REE',
+    anomalyType: 'Структурная',
+    source: 'Векторизация',
+    depth: '300–700м',
+    mineralClass: 'Mo, РЗЭ',
     certainty: '88%'
   }
 ];
@@ -108,22 +111,22 @@ function VectorizedDatasetCard({ className }: { className?: string }) {
               <thead>
                 <tr className="border-b border-white dark:border-white bg-neutral-50/20 dark:bg-neutral-800/20">
                   <th className="px-4 py-3 text-left text-xs font-medium text-neutral-600 dark:text-neutral-400 uppercase tracking-wider border-r border-white dark:border-white">
-                    Block ID
+                    ID Блока
                   </th>
                   <th className="px-4 py-3 text-left text-xs font-medium text-neutral-600 dark:text-neutral-400 uppercase tracking-wider border-r border-white dark:border-white">
-                    Anomaly Type
+                    Тип аномалии
                   </th>
                   <th className="px-4 py-3 text-left text-xs font-medium text-neutral-600 dark:text-neutral-400 uppercase tracking-wider border-r border-white dark:border-white">
-                    Source
+                    Источник
                   </th>
                   <th className="px-4 py-3 text-left text-xs font-medium text-neutral-600 dark:text-neutral-400 uppercase tracking-wider border-r border-white dark:border-white">
                     <div className="flex items-center gap-1">
                       <Layers className="w-3 h-3" />
-                      Depth
+                      Глубина
                     </div>
                   </th>
                   <th className="px-4 py-3 text-left text-xs font-medium text-neutral-600 dark:text-neutral-400 uppercase tracking-wider">
-                    Mineral Class
+                    Класс минералов
                   </th>
                 </tr>
               </thead>
@@ -191,48 +194,48 @@ export default function FeaturesSectionDemo() {
   const features = [
     // Row 1
     {
-      title: "1300+ Soviet-Era Reports, Reborn as Digital Intelligence",
+      title: "Оцифровали 1300 архивных отчетов",
       description:
-        "GeoCube ingests and vectorizes historic geology — borehole logs, field sketches, seismic charts — dating back to 1954. What was once trapped in paper is now searchable, analyzable, and mappable. We don't just preserve the past — we weaponize it for modern discovery.",
+        "Переводим бумажные документы 1954-1991 годов в цифровой формат. Каротажные диаграммы, полевые зарисовки и сейсмические разрезы становятся доступными для поиска и анализа.",
       skeleton: <SkeletonTwo />,
       className:
         "col-span-1 lg:col-span-3 border-b lg:border-r dark:border-neutral-800",
     },
     {
-      title: "From 700km Above to 700m Below — in Perfect Sync",
+      title: "Спутники + полевая разведка = точность",
       description:
-        "GeoCube fuses ultra-high-res imagery from WorldView-3, ASTER, Landsat, and Sentinel with real-world field data. Every pixel is georeferenced to WGS 84, delivering sub-meter accuracy in mapping topography and spectral anomalies. The result: satellite data that actually works in the field.",
+        "Объединяем спутниковые снимки с полевыми данными. Каждый пиксель имеет точную геопривязку. Результат — данные, которые работают в реальных условиях.",
       skeleton: <SkeletonFive />,
       className: "col-span-1 lg:col-span-3 border-b dark:border-neutral-800",
     },
     // Row 2
     {
-      title: "Kazakhstan's Subsurface, Real-Time and Reclassed",
+      title: "Анализируем 1300 блоков в реальном времени",
       description:
-        "We process anomalies and geological signals across 1300+ blocks — classifying by anomaly type, depth, and mineral group. With real-time detection and grid-based insights, this is a live intelligence layer for national-scale mineral exploration.",
+        "Обрабатываем геологические аномалии по всей стране. Классифицируем по типу, глубине и минералам. Создаем оперативную карту для принятия решений.",
       skeleton: <SkeletonThree />,
       className:
         "col-span-1 lg:col-span-3 border-b lg:border-r dark:border-neutral-800",
     },
     {
-      title: "Built in Kazakhstan. Engineered for the World.",
+      title: "Работаем в Казахстане, масштабируемся глобально",
       description:
-        "GeoCube's framework is dataset-agnostic and globally scalable. From South America's lithium triangle to Australia's gold belts, our platform adapts to national archives and satellite feeds — enabling countries to unlock the full value of their subsurface assets.",
+        "Наша платформа адаптируется к любым данным. От литиевых месторождений Южной Америки до золотых поясов Австралии — помогаем странам найти свои ресурсы.",
       skeleton: <SkeletonFour />,
       className: "col-span-1 lg:col-span-3 border-b dark:border-neutral-800",
     },
     // Row 3
     {
-      title: "AI-Powered Geological Intelligence at Scale",
+      title: "ИИ учится на 70 годах данных",
       description:
-        "Machine learning algorithms trained on 70+ years of Soviet-era geological surveys automatically classify mineral signatures, predict exploration targets, and rank blocks by commercial viability — turning decades of field experience into algorithmic precision.",
+        "Алгоритмы анализируют минеральные сигнатуры и прогнозируют перспективные участки. Ранжируем блоки по коммерческой привлекательности.",
       skeleton: <SkeletonOne />,
       className: "col-span-1 lg:col-span-3 border-b lg:border-r dark:border-neutral-800",
     },
     {
-      title: "Mapping & Block Ranking Engine",
+      title: "Картируем и ранжируем участки",
       description:
-        "Divides land into blocks for resource potential scoring. Applies a custom block-ranking algorithm based on vectors, AI, and economic factors. Supports strategic land selection and claim decisions.",
+        "Делим территорию на блоки и оцениваем потенциал каждого. Наш алгоритм учитывает геологию, экономику и доступность. Помогаем выбрать лучшие участки для лицензирования.",
       skeleton: <SkeletonLightningFast />,
       className: "col-span-1 lg:col-span-3 border-b lg:border-none dark:border-neutral-800",
     },
@@ -241,18 +244,16 @@ export default function FeaturesSectionDemo() {
     <div id="features" className="relative z-20 py-10 lg:py-40 max-w-7xl mx-auto">
       <div className="px-8">
         <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
-            Every Layer Tells a Story
+            Каждый слой данных — это новая возможность
         </h4>
 
         <p className="text-sm lg:text-base  max-w-2xl  my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
-        GeoCube transforms fragmented geological inputs into a unified, high-precision system — combining legacy data, satellite analytics, 
-        and AI-driven modeling. Each feature is engineered to reduce risk, compress timelines, and uncover what others overlook.
-
+        Объединяем архивные данные, спутниковую аналитику и ИИ-модели. Каждая функция помогает найти то, что пропускают другие.
         </p>
       </div>
 
       <div className="relative">
-        <div className="grid grid-cols-1 lg:grid-cols-6 mt-12 border border-neutral-200/50 dark:border-neutral-800/50 rounded-xl overflow-hidden bg-white/30 dark:bg-neutral-900/30 backdrop-blur-sm">
+        <div className="grid grid-cols-1 lg:grid-cols-6 mt-12 border border-neutral-200/50 dark:border-neutral-800/50 rounded-xl overflow-hidden bg-white/5 dark:bg-neutral-900/10 backdrop-blur-sm">
           {features.map((feature) => (
             <FeatureCard key={feature.title} className={feature.className}>
               <FeatureTitle>{feature.title}</FeatureTitle>
@@ -407,7 +408,7 @@ export const SkeletonOne = () => {
   );
 };
 
-const Sparkles = () => {
+const SparklesEffect = () => {
   const randomMove = () => Math.random() * 2 - 1;
   const randomOpacity = () => Math.random();
   const random = () => Math.random();
@@ -693,73 +694,64 @@ export const SkeletonFive = () => {
       {/* Subtle background that matches website theme */}
       <div className="absolute inset-0 bg-gradient-to-br from-neutral-50/5 via-transparent to-neutral-100/5 dark:from-neutral-900/20 dark:via-transparent dark:to-neutral-800/10" />
       
-      {/* Minimal starfield - more subtle */}
+      {/* Optimized starfield - reduced count and simplified animations */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(15)].map((_, i) => (
+        {[...Array(8)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-px h-px bg-neutral-400/40 dark:bg-neutral-500/60 rounded-full"
             style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
+              top: `${20 + i * 10}%`,
+              left: `${15 + i * 8}%`,
             }}
             animate={{
               opacity: [0.2, 0.6, 0.2],
             }}
             transition={{
-              duration: 3 + Math.random() * 2,
+              duration: 4 + i * 0.5,
               repeat: Infinity,
-              delay: Math.random() * 2,
+              delay: i * 0.3,
             }}
           />
         ))}
       </div>
 
-      {/* Central satellite system - moved up much more to center on card */}
+      {/* Central satellite system - optimized with reduced animations */}
       <div className="relative scale-150 -mt-20">
-        {/* Earth - larger and more prominent */}
+        {/* Earth - optimized rotation */}
         <motion.div
           className="relative w-32 h-32 rounded-full bg-gradient-to-br from-neutral-600 via-neutral-700 to-neutral-800 dark:from-neutral-700 dark:via-neutral-800 dark:to-neutral-900"
           animate={{ rotate: 360 }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+          style={{ willChange: 'transform' }}
         >
           {/* Subtle glow */}
           <div className="absolute -inset-2 rounded-full bg-gradient-to-br from-cyan-500/15 to-transparent blur-sm" />
           
-          {/* Continental patterns - more visible */}
+          {/* Continental patterns - static for performance */}
           <div className="absolute inset-2 rounded-full overflow-hidden">
             <div className="absolute top-2 left-4 w-8 h-6 bg-neutral-500/60 dark:bg-neutral-600/40 rounded-full transform rotate-12" />
             <div className="absolute top-6 right-2 w-6 h-8 bg-neutral-500/50 dark:bg-neutral-600/30 rounded-full transform -rotate-6" />
             <div className="absolute bottom-2 left-2 w-10 h-4 bg-neutral-500/70 dark:bg-neutral-600/50 rounded-full transform rotate-45" />
           </div>
           
-          {/* Coordinate grid - more visible */}
+          {/* Coordinate grid - static */}
           <div className="absolute inset-0 rounded-full border border-cyan-500/20 dark:border-cyan-400/30" />
           <div className="absolute inset-2 rounded-full border border-cyan-500/10 dark:border-cyan-400/20" />
           <div className="absolute inset-4 rounded-full border border-cyan-500/5 dark:border-cyan-400/10" />
         </motion.div>
 
-        {/* Satellite orbits - enhanced scanning visualization */}
-        
-        {/* WorldView-3 High-Resolution Scanner */}
+        {/* WorldView-3 High-Resolution Scanner - optimized */}
         <motion.div
           className="absolute inset-0 w-44 h-44 border border-dashed border-neutral-300/50 dark:border-neutral-600/50 rounded-full"
           style={{ left: '-24px', top: '-24px' }}
           animate={{ rotate: -360 }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
         >
-          {/* Detailed Satellite Body */}
-          <motion.div
+          {/* Simplified Satellite Body - removed complex box-shadow animations */}
+          <div
             className="absolute"
             style={{ top: '-4px', left: '50%', marginLeft: '-8px' }}
-            animate={{ 
-              boxShadow: [
-                "0 0 4px rgba(6, 182, 212, 0.2)",
-                "0 0 8px rgba(6, 182, 212, 0.3)",
-                "0 0 4px rgba(6, 182, 212, 0.2)"
-              ]
-            }}
-            transition={{ duration: 2, repeat: Infinity }}
           >
             {/* Main Satellite Body */}
             <div className="w-4 h-3 bg-gradient-to-br from-slate-400 to-slate-600 dark:from-slate-500 dark:to-slate-700 rounded-sm border border-slate-500/30" />
@@ -778,104 +770,62 @@ export const SkeletonFive = () => {
             <div className="absolute top-1/2 -left-0.5 w-px h-2 bg-neutral-500/60 transform -translate-y-1/2" />
             <div className="absolute top-1/2 -right-0.5 w-px h-2 bg-neutral-500/60 transform -translate-y-1/2" />
             
-            {/* Status Lights */}
+            {/* Simplified Status Lights - reduced animation frequency */}
             <motion.div 
               className="absolute top-0.5 left-0.5 w-0.5 h-0.5 bg-green-400/80 rounded-full"
-              animate={{ opacity: [0.3, 0.7, 0.3] }}
-              transition={{ duration: 1, repeat: Infinity }}
+              animate={{ opacity: [0.4, 0.8, 0.4] }}
+              transition={{ duration: 2, repeat: Infinity }}
             />
             <motion.div 
               className="absolute top-0.5 right-0.5 w-0.5 h-0.5 bg-red-400/80 rounded-full"
-              animate={{ opacity: [0.7, 0.3, 0.7] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
+              animate={{ opacity: [0.6, 0.4, 0.6] }}
+              transition={{ duration: 3, repeat: Infinity }}
             />
-          </motion.div>
+          </div>
 
-          {/* Enhanced High-resolution scanning cone */}
+          {/* Simplified scanning cone - reduced complexity */}
           <motion.div
             className="absolute top-4 left-1/2 transform -translate-x-1/2"
             animate={{ 
-              opacity: [0.2, 0.5, 0.2],
-              scaleY: [1, 1.3, 1],
-              scaleX: [0.8, 1.1, 0.8]
+              opacity: [0.3, 0.6, 0.3],
+              scaleY: [1, 1.2, 1],
             }}
-            transition={{ duration: 1.5, repeat: Infinity }}
+            transition={{ duration: 3, repeat: Infinity }}
           >
             <div className="w-px h-8 bg-gradient-to-b from-cyan-400/40 to-transparent" />
-            <div className="absolute top-0 left-1/2 w-4 h-8 bg-gradient-to-b from-cyan-400/10 via-cyan-400/5 to-transparent transform -translate-x-1/2" />
-            <div className="absolute top-0 left-1/2 w-2 h-6 bg-gradient-to-b from-cyan-500/20 via-cyan-500/10 to-transparent transform -translate-x-1/2" />
+            <div className="absolute top-0 left-1/2 w-3 h-8 bg-gradient-to-b from-cyan-400/15 to-transparent transform -translate-x-1/2" />
           </motion.div>
           
-          {/* Advanced scanning raster pattern */}
-          <motion.div
-            className="absolute top-4 left-1/2 transform -translate-x-1/2"
-            animate={{ 
-              opacity: [0, 0.6, 0],
-              scaleX: [0.6, 1.3, 0.6]
-            }}
-            transition={{ duration: 1.2, repeat: Infinity, delay: 0.3 }}
-          >
-            {[...Array(4)].map((_, i) => (
-              <motion.div 
-                key={i} 
-                className="absolute h-px bg-cyan-300/30" 
-                style={{ 
-                  top: `${i * 1.5}px`, 
-                  left: '-6px',
-                  width: '12px'
-                }}
-                animate={{ 
-                  width: ['8px', '14px', '8px'],
-                  opacity: [0.2, 0.5, 0.2]
-                }}
-                transition={{ 
-                  duration: 1.2, 
-                  repeat: Infinity, 
-                  delay: i * 0.1 
-                }}
-              />
-            ))}
-          </motion.div>
-          
-          {/* Enhanced data collection streams */}
-          {[...Array(3)].map((_, i) => (
+          {/* Simplified data collection - reduced count */}
+          {[...Array(2)].map((_, i) => (
             <motion.div
               key={i}
               className="absolute top-4 left-1/2 w-1 h-1 bg-cyan-300/60 rounded-full transform -translate-x-1/2"
               animate={{ 
-                y: [0, 25, 0],
-                opacity: [0, 0.8, 0],
-                scale: [0.3, 0.8, 0.3]
+                y: [0, 20, 0],
+                opacity: [0, 0.7, 0],
               }}
               transition={{ 
-                duration: 2.5, 
+                duration: 4, 
                 repeat: Infinity, 
-                delay: i * 0.4,
+                delay: i * 1,
                 ease: "easeInOut"
               }}
             />
           ))}
         </motion.div>
 
-        {/* ASTER Thermal Infrared Scanner */}
+        {/* ASTER Thermal Infrared Scanner - optimized */}
         <motion.div
           className="absolute inset-0 w-56 h-56 border border-dashed border-neutral-300/40 dark:border-neutral-600/40 rounded-full"
           style={{ left: '-40px', top: '-40px' }}
           animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
         >
-          {/* Detailed Thermal Satellite */}
-          <motion.div
+          {/* Simplified Thermal Satellite */}
+          <div
             className="absolute"
             style={{ top: '50%', right: '-10px', marginTop: '-6px' }}
-            animate={{ 
-              boxShadow: [
-                "0 0 4px rgba(239, 68, 68, 0.2)",
-                "0 0 8px rgba(239, 68, 68, 0.3)",
-                "0 0 4px rgba(239, 68, 68, 0.2)"
-              ]
-            }}
-            transition={{ duration: 2.5, repeat: Infinity }}
           >
             {/* Main Satellite Body */}
             <div className="w-5 h-3 bg-gradient-to-br from-slate-400 to-slate-600 dark:from-slate-500 dark:to-slate-700 rounded-sm border border-slate-500/30" />
@@ -894,107 +844,66 @@ export const SkeletonFive = () => {
             <div className="absolute top-1/2 -left-0.5 w-px h-2.5 bg-neutral-500/60 transform -translate-y-1/2" />
             <div className="absolute top-1/2 -right-0.5 w-px h-2.5 bg-neutral-500/60 transform -translate-y-1/2" />
             
-            {/* Thermal Status Indicators */}
+            {/* Simplified Status Indicators */}
             <motion.div 
               className="absolute top-0.5 left-0.5 w-0.5 h-0.5 bg-orange-400/80 rounded-full"
-              animate={{ opacity: [0.3, 0.7, 0.3] }}
-              transition={{ duration: 0.8, repeat: Infinity }}
+              animate={{ opacity: [0.4, 0.8, 0.4] }}
+              transition={{ duration: 2.5, repeat: Infinity }}
             />
             <motion.div 
               className="absolute top-0.5 right-0.5 w-0.5 h-0.5 bg-red-400/80 rounded-full"
-              animate={{ opacity: [0.7, 0.3, 0.7] }}
-              transition={{ duration: 1.2, repeat: Infinity }}
+              animate={{ opacity: [0.6, 0.3, 0.6] }}
+              transition={{ duration: 3.5, repeat: Infinity }}
             />
-          </motion.div>
+          </div>
 
-          {/* Enhanced thermal scanning sweep */}
+          {/* Simplified thermal scanning */}
           <motion.div
             className="absolute top-1/2 right-3 transform -translate-y-1/2"
             animate={{ 
-              opacity: [0.2, 0.6, 0.2],
-              scaleX: [1, 1.5, 1],
-              scaleY: [0.8, 1.2, 0.8]
+              opacity: [0.3, 0.6, 0.3],
+              scaleX: [1, 1.3, 1],
             }}
-            transition={{ duration: 2, repeat: Infinity }}
+            transition={{ duration: 4, repeat: Infinity }}
           >
-            <div className="w-8 h-px bg-gradient-to-r from-red-400/50 to-transparent" />
-            <div className="absolute top-1/2 left-0 w-8 h-4 bg-gradient-to-r from-red-400/15 via-orange-400/8 to-transparent transform -translate-y-1/2" />
-            <div className="absolute top-1/2 left-0 w-6 h-3 bg-gradient-to-r from-red-500/20 via-red-500/10 to-transparent transform -translate-y-1/2" />
+            <div className="w-6 h-px bg-gradient-to-r from-red-400/50 to-transparent" />
+            <div className="absolute top-1/2 left-0 w-6 h-3 bg-gradient-to-r from-red-400/15 to-transparent transform -translate-y-1/2" />
           </motion.div>
           
-          {/* Advanced thermal data waves */}
-          {[...Array(3)].map((_, i) => (
+          {/* Simplified thermal data waves - reduced count */}
+          {[...Array(2)].map((_, i) => (
             <motion.div
               key={i}
               className="absolute top-1/2 right-3 border rounded-full transform -translate-y-1/2"
               style={{
-                width: `${4 + i * 1.5}px`,
+                width: `${4 + i * 2}px`,
                 height: `${3 + i * 1}px`,
-                borderColor: ['#ef4444', '#f97316', '#eab308'][i] + '30'
+                borderColor: ['#ef4444', '#f97316'][i] + '30'
               }}
               animate={{ 
-                scale: [0.5, 2, 0.5],
-                opacity: [0.6, 0, 0.6]
+                scale: [0.8, 1.5, 0.8],
+                opacity: [0.5, 0, 0.5]
               }}
               transition={{ 
-                duration: 3, 
+                duration: 5, 
                 repeat: Infinity, 
-                delay: i * 0.5
+                delay: i * 1.5
               }}
             />
           ))}
-          
-          {/* Enhanced temperature data visualization */}
-          <motion.div
-            className="absolute top-1/2 right-3 transform -translate-y-1/2"
-            animate={{ 
-              opacity: [0, 0.7, 0]
-            }}
-            transition={{ duration: 2.5, repeat: Infinity, delay: 1 }}
-          >
-            {['#ef4444', '#f97316', '#eab308'].map((color, i) => (
-              <motion.div 
-                key={i} 
-                className="absolute h-px rounded-full" 
-                style={{ 
-                  backgroundColor: color + '50',
-                  top: `${i * 1.5 - 2}px`, 
-                  right: '0px',
-                  width: '4px'
-                }}
-                animate={{
-                  width: ['2px', '5px', '2px'],
-                  opacity: [0.3, 0.7, 0.3]
-                }}
-                transition={{
-                  duration: 2.5,
-                  repeat: Infinity,
-                  delay: i * 0.2
-                }}
-              />
-            ))}
-          </motion.div>
         </motion.div>
 
-        {/* Landsat Multispectral Imager */}
+        {/* Landsat Multispectral Imager - optimized */}
         <motion.div
           className="absolute inset-0 w-68 h-68 border border-dashed border-neutral-300/30 dark:border-neutral-600/30 rounded-full"
           style={{ left: '-56px', top: '-56px' }}
           animate={{ rotate: -360 }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
         >
-          {/* Detailed Multispectral Satellite */}
-          <motion.div
+          {/* Simplified Multispectral Satellite */}
+          <div
             className="absolute"
             style={{ bottom: '-8px', left: '50%', marginLeft: '-12px' }}
-            animate={{ 
-              boxShadow: [
-                "0 0 4px rgba(139, 92, 246, 0.2)",
-                "0 0 8px rgba(139, 92, 246, 0.3)",
-                "0 0 4px rgba(139, 92, 246, 0.2)"
-              ]
-            }}
-            transition={{ duration: 3, repeat: Infinity }}
           >
             {/* Main Satellite Body */}
             <div className="w-6 h-4 bg-gradient-to-br from-slate-400 to-slate-600 dark:from-slate-500 dark:to-slate-700 rounded-sm border border-slate-500/30" />
@@ -1017,160 +926,128 @@ export const SkeletonFive = () => {
             <div className="absolute top-1/2 -left-1 w-px h-3 bg-neutral-500/60 transform -translate-y-1/2" />
             <div className="absolute top-1/2 -right-1 w-px h-3 bg-neutral-500/60 transform -translate-y-1/2" />
             
-            {/* Spectral Status Indicators */}
+            {/* Simplified Spectral Status Indicators */}
             <motion.div 
               className="absolute top-0.5 left-0.5 w-0.5 h-0.5 bg-purple-400/80 rounded-full"
-              animate={{ opacity: [0.3, 0.7, 0.3] }}
-              transition={{ duration: 0.6, repeat: Infinity }}
+              animate={{ opacity: [0.4, 0.8, 0.4] }}
+              transition={{ duration: 2, repeat: Infinity }}
             />
             <motion.div 
               className="absolute top-0.5 right-0.5 w-0.5 h-0.5 bg-indigo-400/80 rounded-full"
-              animate={{ opacity: [0.7, 0.3, 0.7] }}
-              transition={{ duration: 1, repeat: Infinity }}
+              animate={{ opacity: [0.6, 0.3, 0.6] }}
+              transition={{ duration: 3, repeat: Infinity }}
             />
-          </motion.div>
+          </div>
 
-          {/* Enhanced multispectral scanning column */}
+          {/* Simplified multispectral scanning */}
           <motion.div
             className="absolute bottom-4 left-1/2 transform -translate-x-1/2"
             animate={{ 
-              opacity: [0.2, 0.6, 0.2],
-              scaleY: [1, 1.3, 1],
-              scaleX: [0.6, 1.2, 0.6]
+              opacity: [0.3, 0.6, 0.3],
+              scaleY: [1, 1.2, 1],
             }}
-            transition={{ duration: 2.5, repeat: Infinity }}
+            transition={{ duration: 4, repeat: Infinity }}
           >
-            <div className="w-px h-10 bg-gradient-to-t from-purple-400/50 to-transparent" />
-            <div className="absolute bottom-0 left-1/2 w-5 h-10 bg-gradient-to-t from-purple-400/15 via-purple-400/8 to-transparent transform -translate-x-1/2" />
-            <div className="absolute bottom-0 left-1/2 w-3 h-8 bg-gradient-to-t from-purple-500/20 via-purple-500/10 to-transparent transform -translate-x-1/2" />
+            <div className="w-px h-8 bg-gradient-to-t from-purple-400/50 to-transparent" />
+            <div className="absolute bottom-0 left-1/2 w-3 h-8 bg-gradient-to-t from-purple-400/15 to-transparent transform -translate-x-1/2" />
           </motion.div>
           
-          {/* Advanced spectral band analysis */}
-          <motion.div
-            className="absolute bottom-4 left-1/2 transform -translate-x-1/2"
-            animate={{ opacity: [0, 0.7, 0] }}
-            transition={{ duration: 2.2, repeat: Infinity, delay: 0.5 }}
-          >
-            {['#ef4444', '#f97316', '#eab308', '#22c55e', '#3b82f6', '#8b5cf6'].map((color, i) => (
-              <motion.div 
-                key={i} 
-                className="absolute h-px rounded-full" 
-                style={{ 
-                  backgroundColor: color + '40',
-                  top: `${i * 1.5}px`, 
-                  left: '-8px',
-                  width: '16px'
-                }}
-                animate={{
-                  width: ['12px', '20px', '12px'],
-                  opacity: [0.3, 0.6, 0.3],
-                  x: [-2, 2, -2]
-                }}
-                transition={{
-                  duration: 2.2,
-                  repeat: Infinity,
-                  delay: i * 0.15
-                }}
-              />
-            ))}
-          </motion.div>
+          {/* Simplified spectral band analysis - reduced count */}
+          {['#ef4444', '#22c55e', '#8b5cf6'].map((color, i) => (
+            <motion.div 
+              key={i} 
+              className="absolute h-px rounded-full" 
+              style={{ 
+                backgroundColor: color + '40',
+                top: `${i * 2}px`, 
+                left: '-6px',
+                width: '12px'
+              }}
+              animate={{
+                width: ['10px', '14px', '10px'],
+                opacity: [0.4, 0.7, 0.4],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                delay: i * 0.5
+              }}
+            />
+          ))}
           
-          {/* Enhanced data packets with spectral colors */}
-          {[...Array(4)].map((_, i) => (
+          {/* Simplified data packets - reduced count */}
+          {[...Array(2)].map((_, i) => (
             <motion.div
               key={i}
               className="absolute bottom-4 left-1/2 w-1 h-1 rounded-full transform -translate-x-1/2"
               style={{ 
-                backgroundColor: ['#ef4444', '#f97316', '#22c55e', '#8b5cf6'][i] + '70'
+                backgroundColor: ['#ef4444', '#8b5cf6'][i] + '70'
               }}
               animate={{ 
-                y: [0, 30, 0],
-                opacity: [0, 0.9, 0],
-                scale: [0.2, 1, 0.2]
+                y: [0, 20, 0],
+                opacity: [0, 0.8, 0],
               }}
               transition={{ 
-                duration: 3.5, 
+                duration: 5, 
                 repeat: Infinity, 
-                delay: i * 0.4,
+                delay: i * 1.5,
                 ease: "easeInOut"
               }}
             />
           ))}
         </motion.div>
 
-        {/* Enhanced data collection points on Earth */}
-        <motion.div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          animate={{ opacity: [0.5, 0.9, 0.5] }}
-          transition={{ duration: 3, repeat: Infinity }}
-        >
-          {/* Mineral detection points */}
+        {/* Simplified data collection points on Earth */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          {/* Mineral detection points - simplified animations */}
           <motion.div 
             className="w-1.5 h-1.5 bg-cyan-500/70 dark:bg-cyan-400/80 rounded-full absolute top-3 left-4"
             animate={{ 
-              scale: [1, 1.5, 1],
-              boxShadow: [
-                "0 0 4px rgba(6, 182, 212, 0.3)",
-                "0 0 8px rgba(6, 182, 212, 0.6)",
-                "0 0 4px rgba(6, 182, 212, 0.3)"
-              ]
+              scale: [1, 1.3, 1],
             }}
-            transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+            transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
           />
           <motion.div 
             className="w-1.5 h-1.5 bg-cyan-500/70 dark:bg-cyan-400/80 rounded-full absolute bottom-3 right-3"
             animate={{ 
-              scale: [1, 1.5, 1],
-              boxShadow: [
-                "0 0 4px rgba(6, 182, 212, 0.3)",
-                "0 0 8px rgba(6, 182, 212, 0.6)",
-                "0 0 4px rgba(6, 182, 212, 0.3)"
-              ]
+              scale: [1, 1.3, 1],
             }}
-            transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+            transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
           />
           <motion.div 
             className="w-1.5 h-1.5 bg-cyan-500/70 dark:bg-cyan-400/80 rounded-full absolute top-6 right-6"
             animate={{ 
-              scale: [1, 1.5, 1],
-              boxShadow: [
-                "0 0 4px rgba(6, 182, 212, 0.3)",
-                "0 0 8px rgba(6, 182, 212, 0.6)",
-                "0 0 4px rgba(6, 182, 212, 0.3)"
-              ]
+              scale: [1, 1.3, 1],
             }}
-            transition={{ duration: 2, repeat: Infinity, delay: 1.5 }}
+            transition={{ duration: 3, repeat: Infinity, delay: 2.5 }}
           />
           
-          {/* Data transmission lines connecting points */}
+          {/* Simplified data transmission lines */}
           <motion.div
-            className="absolute top-3 left-4 w-px h-8 bg-cyan-400/40 transform rotate-45"
-            animate={{ opacity: [0, 0.6, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, delay: 2 }}
+            className="absolute top-3 left-4 w-px h-6 bg-cyan-400/40 transform rotate-45"
+            animate={{ opacity: [0, 0.5, 0] }}
+            transition={{ duration: 3, repeat: Infinity, delay: 1 }}
           />
           <motion.div
-            className="absolute bottom-3 right-3 w-px h-6 bg-cyan-400/40 transform -rotate-45"
-            animate={{ opacity: [0, 0.6, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, delay: 2.5 }}
+            className="absolute bottom-3 right-3 w-px h-4 bg-cyan-400/40 transform -rotate-45"
+            animate={{ opacity: [0, 0.5, 0] }}
+            transition={{ duration: 3, repeat: Infinity, delay: 2 }}
           />
-        </motion.div>
+        </div>
         
-        {/* Data fusion visualization in center */}
+        {/* Simplified data fusion visualization */}
         <motion.div
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
           animate={{ 
-            opacity: [0, 0.4, 0],
-            scale: [0.8, 1.3, 0.8]
+            opacity: [0, 0.3, 0],
+            scale: [0.9, 1.2, 0.9]
           }}
-          transition={{ duration: 4, repeat: Infinity }}
+          transition={{ duration: 6, repeat: Infinity }}
         >
-          <div className="w-8 h-8 rounded-full border border-cyan-400/20 dark:border-cyan-300/30" />
+          <div className="w-6 h-6 rounded-full border border-cyan-400/20 dark:border-cyan-300/30" />
           <div className="absolute inset-1 rounded-full border border-cyan-400/15 dark:border-cyan-300/20" />
-          <div className="absolute inset-2 rounded-full border border-cyan-400/10 dark:border-cyan-300/15" />
         </motion.div>
       </div>
-
-
     </div>
   );
 };
@@ -1186,10 +1063,10 @@ export const SkeletonSix = () => {
   ];
 
   const layers = [
-    { id: "geological", name: "Geological", active: true },
-    { id: "magnetic", name: "Magnetic", active: false },
-    { id: "thermal", name: "Thermal", active: true },
-    { id: "structural", name: "Structural", active: false }
+    { id: "geological", name: "Геологический", active: true },
+    { id: "magnetic", name: "Магнитный", active: false },
+    { id: "thermal", name: "Тепловой", active: true },
+    { id: "structural", name: "Структурный", active: false }
   ];
 
   return (
@@ -1251,7 +1128,7 @@ export const SkeletonSix = () => {
 
       {/* Layer Controls */}
       <div className="absolute top-4 left-4 bg-black/70 backdrop-blur-sm rounded-lg p-4">
-        <div className="text-sm text-white mb-3 font-medium">Active Layers</div>
+        <div className="text-sm text-white mb-3 font-medium">Активные слои</div>
         <div className="space-y-2">
           {layers.map((layer) => (
             <motion.div
@@ -1279,7 +1156,7 @@ export const SkeletonSix = () => {
         <div className="grid grid-cols-3 gap-4">
           {/* Mini Chart */}
           <div className="col-span-1">
-            <div className="text-xs text-neutral-400 mb-2">Mineral Distribution</div>
+            <div className="text-xs text-neutral-400 mb-2">Распределение минералов</div>
             <div className="flex items-end space-x-1 h-16">
               {[65, 85, 45, 75, 55, 90, 70].map((height, i) => (
                 <motion.div
@@ -1295,18 +1172,18 @@ export const SkeletonSix = () => {
 
           {/* Block Details */}
           <div className="col-span-1">
-            <div className="text-xs text-neutral-400 mb-2">Selected Block: {selectedBlock}</div>
+            <div className="text-xs text-neutral-400 mb-2">Выбранный блок: {selectedBlock}</div>
             <div className="space-y-1">
               <div className="flex justify-between text-xs">
-                <span className="text-neutral-300">Depth:</span>
-                <span className="text-cyan-400">200-450m</span>
+                <span className="text-neutral-300">Глубина:</span>
+                <span className="text-cyan-400">200-450м</span>
               </div>
               <div className="flex justify-between text-xs">
-                <span className="text-neutral-300">Confidence:</span>
+                <span className="text-neutral-300">Уверенность:</span>
                 <span className="text-green-400">90%</span>
               </div>
               <div className="flex justify-between text-xs">
-                <span className="text-neutral-300">Minerals:</span>
+                <span className="text-neutral-300">Минералы:</span>
                 <span className="text-yellow-400">Cu + Au</span>
               </div>
             </div>
@@ -1319,14 +1196,14 @@ export const SkeletonSix = () => {
               whileTap={{ scale: 0.95 }}
               className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-xs px-3 py-2 rounded font-medium"
             >
-              Generate Report
+              Создать отчет
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs px-3 py-2 rounded font-medium"
             >
-              3D Visualization
+              3D Визуализация
             </motion.button>
           </div>
         </div>
@@ -1420,12 +1297,12 @@ export const SkeletonLightningFast = () => {
         {/* Scoring metrics - Above graph */}
         <div className="absolute top-8 left-6 text-left">
           <div className="text-3xl font-bold text-emerald-400">↗ 94.2%</div>
-          <div className="text-sm text-gray-400">Accuracy Score</div>
+          <div className="text-sm text-gray-400">Точность</div>
         </div>
         
         <div className="absolute top-20 right-6 text-right">
           <div className="text-xl font-semibold text-emerald-400">847</div>
-          <div className="text-xs text-gray-400">Blocks Analyzed</div>
+          <div className="text-xs text-gray-400">Блоков проанализировано</div>
         </div>
 
         {/* Simple grid background */}

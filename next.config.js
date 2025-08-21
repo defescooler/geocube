@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Base URL configuration
+  assetPrefix: '',
+  basePath: '',
+  
   // Performance optimizations
   compress: true,
   poweredByHeader: false,

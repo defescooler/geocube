@@ -60,12 +60,15 @@ export const AnimatedCarousel = ({
     }
 
     const timer = setTimeout(() => {
-      if (api.selectedScrollSnap() + 1 === api.scrollSnapList().length) {
-        setCurrent(0);
-        api.scrollTo(0);
-      } else {
-        api.scrollNext();
-        setCurrent(current + 1);
+      try {
+        if (api && typeof api.scrollNext === 'function') {
+          api.scrollNext();
+          setCurrent(current + 1);
+        } else {
+          console.warn('Logo carousel API methods not available');
+        }
+      } catch (error) {
+        console.warn('Logo carousel API error:', error);
       }
     }, autoPlayInterval);
 
@@ -86,7 +89,16 @@ export const AnimatedCarousel = ({
           </h2>
           
           <div className="mt-8">
-            <Carousel setApi={setApi} className={`w-full ${carouselClassName}`}>
+            <Carousel 
+              setApi={setApi} 
+              className={`w-full ${carouselClassName}`}
+              opts={{
+                loop: true,
+                align: "start",
+                dragFree: true,
+                containScroll: "trimSnaps",
+              }}
+            >
               <CarouselContent>
                 {logoItems.map((logo, index) => (
                   <CarouselItem className={`basis-1/${itemsPerViewMobile} lg:basis-1/${itemsPerViewDesktop}`} key={index}>

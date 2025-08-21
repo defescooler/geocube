@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --sky-400: #38bdf8;
+  --sky-500: #0ea5e9;
+}
+
+.dark {
+  --sky-400: #38bdf8;
+  --sky-500: #0ea5e9;
+}
+
 @layer base {
   #__next {
     display: flex;
@@ -99,5 +109,49 @@
 
   .text-quaternary {
     @apply text-black/40 dark:text-white/40;
+  }
+
+  /* 3D Layers Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes tooltipFadeIn {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 0.2s ease-out;
+  }
+
+  .animate-tooltipFadeIn {
+    animation: tooltipFadeIn 0.3s ease-out;
+  }
+
+  /* Ensure 3D transforms work properly across browsers */
+  .preserve-3d {
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+  }
+
+  /* Custom clip-path for diamond shapes */
+  .diamond-clip {
+    clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+    -webkit-clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
   }
 }

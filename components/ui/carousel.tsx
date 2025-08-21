@@ -65,6 +65,8 @@ const Carousel = React.forwardRef<
       },
       plugins,
     )
+    
+
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
 
@@ -73,16 +75,45 @@ const Carousel = React.forwardRef<
         return
       }
 
-      setCanScrollPrev(api.canScrollPrev())
-      setCanScrollNext(api.canScrollNext())
+      try {
+        // Check if methods exist before calling them
+        if (typeof api.canScrollPrev === 'function' && typeof api.canScrollNext === 'function') {
+          setCanScrollPrev(api.canScrollPrev())
+          setCanScrollNext(api.canScrollNext())
+        } else {
+          console.warn('Carousel API methods not available')
+          setCanScrollPrev(false)
+          setCanScrollNext(false)
+        }
+      } catch (error) {
+        console.warn('Carousel API not ready:', error)
+        setCanScrollPrev(false)
+        setCanScrollNext(false)
+      }
     }, [])
 
     const scrollPrev = React.useCallback(() => {
-      api?.scrollPrev()
+      try {
+        if (api && typeof api.scrollPrev === 'function') {
+          api.scrollPrev()
+        } else {
+          console.warn('Carousel scrollPrev method not available')
+        }
+      } catch (error) {
+        console.warn('Carousel scrollPrev error:', error)
+      }
     }, [api])
 
     const scrollNext = React.useCallback(() => {
-      api?.scrollNext()
+      try {
+        if (api && typeof api.scrollNext === 'function') {
+          api.scrollNext()
+        } else {
+          console.warn('Carousel scrollNext method not available')
+        }
+      } catch (error) {
+        console.warn('Carousel scrollNext error:', error)
+      }
     }, [api])
 
     const handleKeyDown = React.useCallback(
@@ -111,13 +142,22 @@ const Carousel = React.forwardRef<
         return
       }
 
-      onSelect(api)
+      // Add a small delay to ensure API is fully initialized
+      const timer = setTimeout(() => {
+        try {
+          onSelect(api)
+        } catch (error) {
+          console.warn('Carousel API initialization error:', error)
+        }
+      }, 0)
+
       // @ts-ignore - Embla carousel type issue
       api.on("reInit", onSelect)
       // @ts-ignore - Embla carousel type issue  
       api.on("select", onSelect)
 
       return () => {
+        clearTimeout(timer)
         // @ts-ignore - Embla carousel type issue
         api?.off("select", onSelect)
       }
@@ -127,7 +167,7 @@ const Carousel = React.forwardRef<
       <CarouselContext.Provider
         value={{
           carouselRef,
-          api: api,
+          api: api || null,
           opts,
           orientation:
             orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),

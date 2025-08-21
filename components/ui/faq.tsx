@@ -7,47 +7,47 @@ export default function FAQs() {
     const faqItems = [
         {
             id: 'item-1',
-            question: 'What stage is GeoCube in right now?',
-            answer: 'We\'ve moved beyond prototype. Core components are deployed in live environments with commercial clients. Additional features are being built as modular layers based on client feedback.',
+            question: 'На какой стадии сейчас находится GeoCube?',
+            answer: 'Мы вышли за рамки прототипа. Ключевые компоненты развернуты и работают в реальных проектах с коммерческими клиентами. Дополнительные функции создаются как модульные слои на основе запросов клиентов.',
         },
         {
             id: 'item-2',
-            question: 'Who\'s actually using this?',
-            answer: 'Clients include Kazatomprom, ERG, Glencore, and Rio Tinto. We also collaborate with Airbus, Maxar, and SpaceWill on the satellite side. Early users are mostly internal exploration teams and decision-makers at the portfolio level.',
+            question: 'Кто ваши клиенты?',
+            answer: 'Среди наших клиентов — Казатомпром, ERG, Glencore и Rio Tinto. В области спутниковых данных мы сотрудничаем с Airbus, Maxar и SpaceWill. Основные пользователи — это внутренние геологоразведочные команды и руководители, принимающие решения на уровне портфеля активов.',
         },
         {
             id: 'item-3',
-            question: 'Can others build on top of GeoCube?',
-            answer: 'Yes. We offer API access to anomaly maps, spectral composites, and structured datasets. Some clients are integrating it into their internal GIS platforms or reporting tools.',
+            question: 'Можно ли создавать решения на базе GeoCube?',
+            answer: 'Да. Мы предоставляем доступ по API к картам аномалий, спектральным композитам и структурированным наборам данных. Некоторые клиенты интегрируют наши решения в свои внутренние ГИС-платформы и инструменты отчетности.',
         },
         {
             id: 'item-4',
-            question: 'What\'s your data advantage?',
-            answer: 'We\'ve digitized over 1,300 Soviet-era reports, many of which aren\'t available elsewhere. Combined with recent high-res satellite layers, this gives us both historical depth and modern fidelity.',
+            question: 'В чем ваше преимущество по данным?',
+            answer: 'Мы оцифровали более 1300 отчетов советской эпохи, многие из которых недоступны в других источниках. В сочетании с современными спутниковыми снимками высокого разрешения это дает нам как историческую глубину, так и актуальную точность.',
         },
         {
             id: 'item-5',
-            question: 'Isn\'t that legacy data outdated?',
-            answer: 'Not if you know how to use it. We vectorize, reproject, and calibrate it with new satellite inputs. In practice, it helps us detect patterns modern data alone would miss.',
+            question: 'Не устарели ли эти архивные данные?',
+            answer: 'Не устарели, если знать, как их использовать. Мы векторизуем, перепроецируем и калибруем их с помощью новых спутниковых данных. На практике это помогает нам выявлять закономерности, которые невозможно обнаружить, используя только современные данные.',
         },
         {
             id: 'item-6',
-            question: 'Are you just wrapping ArcGIS in AI?',
-            answer: 'No. We built custom ML pipelines that plug into remote sensing layers and use historic exploration results as training data. We also run our own spatial models — PostGIS just hosts the geometry.',
+            question: 'Вы просто добавили ИИ как надстройку к ArcGIS?',
+            answer: 'Нет. Мы создали собственные конвейеры машинного обучения, которые подключаются к слоям дистанционного зондирования и используют результаты исторических геологоразведочных работ в качестве обучающих данных. Мы также используем собственные пространственные модели — PostGIS служит лишь для хранения геометрии.',
         },
         {
             id: 'item-7',
-            question: 'Are you raising?',
-            answer: 'We\'re open to strategic capital — particularly if it accelerates expansion into new regions or lets us build with clients instead of just selling to them.',
+            question: 'Вы привлекаете инвестиции?',
+            answer: 'Мы открыты для стратегического капитала, особенно если он ускорит выход на новые рынки или позволит нам создавать решения совместно с клиентами, а не просто продавать им готовый продукт.',
         },
     ]
 
     return (
-        <section className="py-12 sm:py-16 md:py-24 bg-gray-900">
+        <section className="py-12 sm:py-16 md:py-24">
             <div className="mx-auto max-w-5xl px-4 sm:px-6">
                 <div className="mx-auto max-w-xl text-center">
-                    <h2 className="text-balance text-2xl sm:text-3xl font-bold md:text-4xl lg:text-5xl text-white">Frequently Asked Questions</h2>
-                    <p className="text-gray-300 mt-3 sm:mt-4 text-balance text-sm sm:text-base">Discover quick and comprehensive answers to common questions about our platform, services, and features.</p>
+                    <h2 className="text-balance text-2xl sm:text-3xl font-bold md:text-4xl lg:text-5xl text-white">Часто задаваемые вопросы</h2>
+                    <p className="text-gray-300 mt-3 sm:mt-4 text-balance text-sm sm:text-base">Ответы на основные вопросы о нашей платформе и услугах.</p>
                 </div>
 
                 <div className="mx-auto mt-8 sm:mt-12 max-w-xl">

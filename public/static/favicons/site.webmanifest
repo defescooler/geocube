@@ -1,8 +1,13 @@
 {
-  "name": "Template",
-  "short_name": "template.cretu.dev",
-  "description": "Template",
+  "name": "GeoCube",
+  "short_name": "GeoCube",
+  "description": "AI-powered geospatial platform for mineral exploration",
   "icons": [
+    {
+      "src": "/static/favicons/terra_favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
     {
       "src": "/static/favicons/android-chrome-192x192.png",
       "sizes": "192x192",
@@ -20,5 +25,5 @@
   "dir": "ltr",
   "lang": "en-US",
   "orientation": "portrait-primary",
-  "start_url": "../../index.html"
+  "start_url": "/"
 }

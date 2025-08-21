@@ -27,9 +27,19 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
 
 # vercel
 .vercel
+
+# large files and sensitive data
+public/videos/
+public/images/layers/layers.svg
+*.mp4
+*.mov
+*.avi
+*.wmv
+*.flv
 
 # typescript
 *.tsbuildinfo

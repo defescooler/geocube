@@ -15,9 +15,9 @@ export const metadata: Metadata = {
   creator: 'Terra Exploration',
   description: 'AI-powered geospatial platform for mineral exploration. Digitizing geology, analyzing satellite data, and accelerating discoveries in Kazakhstan and beyond.',
   icons: {
-    apple: '/static/favicons/apple-touch-icon-180x180.png',
-    icon: '/static/favicons/favicon-196x196.png',
-    shortcut: '/favicon.ico',
+    apple: '/static/favicons/apple-touch-icon.png',
+    icon: '/static/favicons/terra_favicon.png',
+    shortcut: '/static/favicons/favicon.ico',
   },
   keywords: [
     'GeoCube',
@@ -97,10 +97,7 @@ export default function RootLayout({
       >
         <Providers>
           <AnimateEnter>
-            <>
-              {children}
-              <Footer />
-            </>
+            {children}
           </AnimateEnter>
         </Providers>
       </body>
