@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   icons: {
     apple: '/static/favicons/apple-touch-icon.png',
     icon: '/static/favicons/terra_favicon.png',
-    shortcut: '/static/favicons/favicon.ico',
+    shortcut: '/static/favicons/terra_favicon.png',
   },
   keywords: [
     'GeoCube',
