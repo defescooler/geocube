@@ -112,7 +112,7 @@ export function HeroSection() {
                                     >
                                         <img
                                             className="h-8 md:h-10 lg:h-12 w-fit"
-                                            src="/logos/Barrick.svg"
+                                            src="/logos/barrick.svg"
                                             alt="Barrick Logo"
                                             height="32"
                                             width="auto"
@@ -126,7 +126,7 @@ export function HeroSection() {
                                     >
                                         <img
                                             className="h-8 md:h-10 lg:h-12 w-fit"
-                                            src="/logos/ERG-logo.svg"
+                                            src="/logos/erg-logo.svg"
                                             alt="ERG Logo"
                                             height="32"
                                             width="auto"
@@ -212,7 +212,7 @@ export function HeroSection() {
                                     >
                                         <img
                                             className="h-8 md:h-10 lg:h-12 w-fit"
-                                            src="/logos/Airbus_Defense_and_Space.svg"
+                                            src="/logos/airbus_defense_and_space.svg"
                                             alt="Airbus Logo"
                                             height="32"
                                             width="auto"

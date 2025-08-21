@@ -3,12 +3,12 @@
 import { AnimatedCarousel } from "../ui/logo-carousel";
 
 const partnerLogos = [
-  "/logos/Barrick.svg",
-  "/logos/ERG-logo.svg",
+  "/logos/barrick.svg",
+  "/logos/erg-logo.svg",
   "/logos/glencore.svg",
   "/logos/rio_tinto.svg",
   "/logos/maxar.svg",
-  "/logos/Airbus_Defense_and_Space.svg",
+  "/logos/airbus_defense_and_space.svg",
   "/logos/kazatomprom.svg",
   "/logos/geocube_white.svg",
   "/logos/karachaganak.svg",

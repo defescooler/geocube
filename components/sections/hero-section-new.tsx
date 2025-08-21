@@ -19,9 +19,9 @@ export default function HeroSection() {
     secondaryCTA: "Смотреть кейсы",
     // Display only top 3 logos for focused social proof
     socialProof: [
-      { name: "Barrick", logo: "/logos/Barrick.svg", url: "https://www.barrick.com/" },
+      { name: "Barrick", logo: "/logos/barrick.svg", url: "https://www.barrick.com/" },
       { name: "Rio Tinto", logo: "/logos/rio_tinto.svg", url: "https://www.riotinto.com/" },
-      { name: "ERG", logo: "/logos/ERG-logo.svg", url: "https://www.erg.kz/ru" },
+      { name: "ERG", logo: "/logos/erg-logo.svg", url: "https://www.erg.kz/ru" },
     ],
   };
   

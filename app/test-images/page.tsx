@@ -7,12 +7,12 @@ export default function TestImagesPage() {
   const logos = [
     '/logos/terra.svg',
     '/logos/geocube_white.svg',
-    '/logos/Barrick.svg',
+    '/logos/barrick.svg',
     '/logos/kazatomprom.svg',
-    '/logos/ERG-logo.svg',
+    '/logos/erg-logo.svg',
     '/logos/rio_tinto.svg',
     '/logos/glencore.svg',
-    '/logos/Airbus_Defense_and_Space.svg',
+    '/logos/airbus_defense_and_space.svg',
   ];
 
   const images = [

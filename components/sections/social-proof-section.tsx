@@ -13,9 +13,9 @@ import { ArrowRight } from 'lucide-react';
 export default function SocialProofSection() {
   // Top client logos (focused selection)
   const topClients = [
-    { name: "Barrick", logo: "/logos/Barrick.svg" },
+    { name: "Barrick", logo: "/logos/barrick.svg" },
     { name: "Rio Tinto", logo: "/logos/rio_tinto.svg" },
-    { name: "ERG", logo: "/logos/ERG-logo.svg" },
+    { name: "ERG", logo: "/logos/erg-logo.svg" },
     { name: "Glencore", logo: "/logos/glencore.svg" },
     { name: "KazAtomProm", logo: "/logos/kazatomprom.svg" }
   ];

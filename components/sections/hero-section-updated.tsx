@@ -32,16 +32,16 @@ export default function HeroSection() {
   
   // All partner logos
   const partnerLogos = [
-    { name: "Barrick", logo: "/logos/Barrick.svg", url: "https://www.barrick.com/" },
+    { name: "Barrick", logo: "/logos/barrick.svg", url: "https://www.barrick.com/" },
     { name: "Kazatomprom", logo: "/logos/kazatomprom.svg", url: "https://www.kazatomprom.kz/ru" },
     { name: "Karachaganak", logo: "/logos/karachaganak.svg", url: "https://www.kpo.kz/" },
-    { name: "ERG", logo: "/logos/ERG-logo.svg", url: "https://www.erg.kz/ru" },
+    { name: "ERG", logo: "/logos/erg-logo.svg", url: "https://www.erg.kz/ru" },
     { name: "Rio Tinto", logo: "/logos/rio_tinto.svg", url: "https://www.riotinto.com/" },
     { name: "Kazakhmys", logo: "/logos/kazakhmys.svg", url: "https://www.kazakhmys.kz/ru" },
     { name: "Glencore", logo: "/logos/glencore.svg", url: "https://www.glencore.com/" },
     { name: "Kazzinc", logo: "/logos/kazzinc.svg", url: "https://www.kazzinc.com/rus" },
-    { name: "Airbus", logo: "/logos/Airbus_Defense_and_Space.svg", url: "https://www.airbus.com/" },
-    { name: "TSO", logo: "/logos/TSO.svg", url: "https://tso.kz/" },
+    { name: "Airbus", logo: "/logos/airbus_defense_and_space.svg", url: "https://www.airbus.com/" },
+    { name: "TSO", logo: "/logos/tso.svg", url: "https://tso.kz/" },
   ];
   
   // Slideshow effect for both images and words
